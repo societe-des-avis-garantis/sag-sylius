@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acme\SyliusExamplePlugin\DependencyInjection;
+namespace Dedi\SyliusSAGPlugin\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
