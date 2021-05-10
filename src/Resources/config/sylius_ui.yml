@@ -1,5 +1,9 @@
 sylius_ui:
     events:
+        sylius.shop.layout.footer:
+            blocks:
+                dedi_sag_widget_footer: '@DediSyliusSAGPlugin/Shop/Layout/Footer/_widgetFooter.html.twig'
+
         sylius.shop.layout.javascripts:
             blocks:
                 dedi_sag_widget_global: '@DediSyliusSAGPlugin/Shop/Layout/_widgetGlobal.html.twig'

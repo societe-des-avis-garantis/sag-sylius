@@ -1,0 +1,12 @@
+{% if dediSag.apiKey is not null %}
+    <div class="ui card" style="width: 100%">
+        <iframe width="100%"
+                height="135"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+                src="https://www.societe-des-avis-garantis.fr/wp-content/plugins/ag-core/widgetFooter.php?id={{ dediSag.apiKey.idSite }}">
+        </iframe>
+    </div>
+{% endif %}
