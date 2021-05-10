@@ -4,13 +4,5 @@
     <services>
         <defaults public="true" />
         <!-- Put your Behat services here -->
-
-        <service id="dedi_sylius_sag.context.ui.shop.welcome" class="Tests\Dedi\SyliusSAGPlugin\Behat\Context\Ui\Shop\WelcomeContext">
-            <argument type="service" id="dedi_sylius_sag.page.shop.static_welcome" />
-            <argument type="service" id="dedi_sylius_sag.page.shop.dynamic_welcome" />
-        </service>
-
-        <service id="dedi_sylius_sag.page.shop.static_welcome" class="Tests\Dedi\SyliusSAGPlugin\Behat\Page\Shop\StaticWelcomePage" parent="sylius.behat.symfony_page" public="false" />
-        <service id="dedi_sylius_sag.page.shop.dynamic_welcome" class="Tests\Dedi\SyliusSAGPlugin\Behat\Page\Shop\DynamicWelcomePage" parent="sylius.behat.symfony_page" public="false" />
     </services>
 </container>
