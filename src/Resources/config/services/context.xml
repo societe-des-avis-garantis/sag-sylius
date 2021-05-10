@@ -3,11 +3,16 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="dedi.sylius_sag_plugin.context.dedi_sag_context" class="Dedi\SyliusSAGPlugin\Context\DediSAGContext">
-            <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.key_context"/>
+            <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>
+            <argument key="$certificateOfTruthContext" type="service" id="dedi.sylius_sag_plugin.context.certificate_of_truth_context"/>
         </service>
 
-        <service id="dedi.sylius_sag_plugin.context.key_context" class="Dedi\SyliusSAGPlugin\Context\ApiKeyContext">
+        <service id="dedi.sylius_sag_plugin.context.api_key_context" class="Dedi\SyliusSAGPlugin\Context\ApiKeyContext">
             <argument key="$key" type="string">%env(resolve:DEDI_SAG_API_KEY)%</argument>
+        </service>
+
+        <service id="dedi.sylius_sag_plugin.context.certificate_of_truth_context" class="Dedi\SyliusSAGPlugin\Context\CertificateOfTruthContext">
+            <argument key="$certificateOfTruthLink" type="string">%env(resolve:DEDI_SAG_CERTIFICATE_OF_TRUTH_LINK)%</argument>
         </service>
     </services>
 </container>

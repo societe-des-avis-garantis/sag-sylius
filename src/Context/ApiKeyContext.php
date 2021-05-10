@@ -6,7 +6,7 @@ namespace Dedi\SyliusSAGPlugin\Context;
 
 use Dedi\SyliusSAGPlugin\Model\ApiKey;
 
-class ApiKeyContext implements ApiKeyContextInterface
+final class ApiKeyContext implements ApiKeyContextInterface
 {
     /** @var ApiKey|null */
     private $apiKey;

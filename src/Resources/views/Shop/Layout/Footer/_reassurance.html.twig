@@ -1,0 +1,7 @@
+{% if dediSag.certificateOfTruth is not null %}
+    <div class="ui center aligned container">
+        <a href="{{ dediSag.certificateOfTruth.link }}" class="ui button inverted primary centered" target="_blank">
+            {{ 'dedi_sag_plugin.ui.footer_reassurance_link_sentance'|trans }}
+        </a>
+    </div>
+{% endif %}
