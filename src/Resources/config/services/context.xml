@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="dedi.sylius_sag_plugin.context.dedi_sag_context" class="Dedi\SyliusSAGPlugin\Context\DediSAGContext">
+            <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.key_context"/>
+        </service>
+
+        <service id="dedi.sylius_sag_plugin.context.key_context" class="Dedi\SyliusSAGPlugin\Context\ApiKeyContext">
+            <argument key="$key" type="string">%env(resolve:DEDI_SAG_API_KEY)%</argument>
+        </service>
+    </services>
+</container>
