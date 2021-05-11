@@ -22,3 +22,6 @@ sylius_review:
                 classes:
                     model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Review\ProductReview
                     repository: Tests\Dedi\SyliusSAGPlugin\Application\src\Repository\Review\ProductReviewRepository
+            reviewer:
+                classes:
+                    model: Sylius\Component\Review\Model\Reviewer
