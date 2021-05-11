@@ -14,4 +14,17 @@ interface ProductReviewRepositoryInterface extends BaseProductReviewRepositoryIn
         string $locale,
         ?string $countryCode
     ): Pagerfanta;
+
+    /**
+     * @param string|int $productId
+     * @param int $count
+     * @param string|null $countryCode
+     *
+     * @return array
+     */
+    public function findLatestByProductIdAndCountryCode(
+        $productId,
+        int $count,
+        ?string $countryCode
+    ): array;
 }

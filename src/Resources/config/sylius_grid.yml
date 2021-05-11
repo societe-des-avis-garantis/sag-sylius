@@ -23,6 +23,7 @@ sylius_grid:
                     options:
                         template: '@DediSyliusSAGPlugin/Admin/ProductReview/Grid/Field/SAGCountryCode.html.twig'
                 author:
+                    label: sylius.ui.author
                     type: twig
                     options:
                         template: '@DediSyliusSAGPlugin/Admin/ProductReview/Grid/Field/author.html.twig'

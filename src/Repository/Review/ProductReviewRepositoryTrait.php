@@ -33,4 +33,23 @@ trait ProductReviewRepositoryTrait
 
         return new Pagerfanta($adapter);
     }
+
+    public function findLatestByProductIdAndCountryCode(
+        $productId,
+        int $count,
+        ?string $countryCode
+    ): array {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.reviewSubject = :productId')
+            ->andWhere('o.status = :status')
+            ->andWhere('o.SAGCountryCode = :countryCode')
+            ->setParameter('productId', $productId)
+            ->setParameter('status', ReviewInterface::STATUS_ACCEPTED)
+            ->setParameter('countryCode', $countryCode)
+            ->addOrderBy('o.createdAt', 'DESC')
+            ->setMaxResults($count)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

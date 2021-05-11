@@ -14,10 +14,11 @@ sylius_shop_partial_product_review_latest:
         _sylius:
             template: $template
             repository:
-                method: findLatestByProductId
+                method: findLatestByProductIdAndCountryCode
                 arguments:
                     - $productId
                     - '!!int $count'
+                    - "expr:service('dedi.sylius_sag_plugin.context.dedi_sag_context').getCountryCode()"
         count: 10
 
 # redefine sylius_shop_partial_product_review_latest in order to paginate and use a new repository method
