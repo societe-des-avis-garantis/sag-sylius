@@ -11,5 +11,7 @@ interface DediSAGContextInterface
 {
     public function getApiKey(): ?ApiKey;
 
+    public function getCountryCode(): ?string;
+
     public function getCertificateOfTruth(): ?CertificateOfTruth;
 }

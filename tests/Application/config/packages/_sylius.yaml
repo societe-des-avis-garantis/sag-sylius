@@ -21,3 +21,4 @@ sylius_review:
             review:
                 classes:
                     model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Review\ProductReview
+                    repository: Tests\Dedi\SyliusSAGPlugin\Application\src\Repository\Review\ProductReviewRepository

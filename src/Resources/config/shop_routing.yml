@@ -1,0 +1,37 @@
+# let's disable the product review form
+sylius_shop_product_review_create:
+    path: /products/{slug}/reviews/new
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController:redirectAction
+        route: ''
+
+# redefine sylius_shop_partial_product_review_latest in order to set the count to 10
+sylius_shop_partial_product_review_latest:
+    path: /latest/{count}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product_review:indexAction
+        _sylius:
+            template: $template
+            repository:
+                method: findLatestByProductId
+                arguments:
+                    - $productId
+                    - '!!int $count'
+        count: 10
+
+# redefine sylius_shop_partial_product_review_latest in order to paginate and use a new repository method
+sylius_shop_product_review_index:
+    path: /products/{slug}/reviews/
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product_review:indexAction
+        _sylius:
+            template: "@SyliusShop/ProductReview/index.html.twig"
+            repository:
+                method: createQueryBuilderForAcceptedByProductSlugAndCountryCode
+                arguments:
+                    - $slug
+                    - "expr:service('sylius.context.locale').getLocaleCode()"
+                    - "expr:service('dedi.sylius_sag_plugin.context.dedi_sag_context').getCountryCode()"
+            paginate: 10

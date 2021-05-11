@@ -1,3 +1,7 @@
 dedi_sag_plugin:
     ui:
         footer_reassurance_link_sentance: Merchant approved by Guaranteed Reviews, click here to view the certification.
+        sag_id: SAG Id
+        answer_comment: Answer
+        answer_created_at: Answer date
+        country_code: Country code

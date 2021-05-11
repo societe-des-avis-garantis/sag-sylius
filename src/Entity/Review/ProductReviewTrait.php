@@ -25,43 +25,11 @@ trait ProductReviewTrait
         return $this->SAGId;
     }
 
-    public function setSAGId(?string $SAGId): void
+    public function setSAGId(?string $SAGId): ProductReviewInterface
     {
         $this->SAGId = $SAGId;
-    }
 
-    public function getSAGStatus(): ?string
-    {
-        $status = $this->getStatus();
-        if (!$status) {
-            return null;
-        }
-
-        return ProductReviewInterface::SYLIUS_TO_SAG_STATUS[$status] ?? null;
-    }
-
-    public function setSAGStatus(?string $SAGStatus): void
-    {
-        if (null === $SAGStatus) {
-            $this->setStatus($SAGStatus);
-
-            return;
-        }
-
-        $sagToSyliusStatus = array_flip(ProductReviewInterface::SYLIUS_TO_SAG_STATUS);
-
-        // todo test en réel
-        if (!array_key_exists($SAGStatus, $sagToSyliusStatus)) {
-            throw new \LogicException(sprintf(
-                'Status "%s" is not valid, please use [%s]',
-                $SAGStatus,
-                implode(', ', array_map(function ($status) {
-                    return sprintf('"%s"', $status);
-                }, ProductReviewInterface::SYLIUS_TO_SAG_STATUS))
-            ));
-        }
-
-        $this->setStatus($sagToSyliusStatus[$SAGStatus]);
+        return $this;
     }
 
     public function getSAGAnswerComment(): ?string
@@ -69,9 +37,11 @@ trait ProductReviewTrait
         return $this->SAGAnswerComment;
     }
 
-    public function setSAGAnswerComment(?string $SAGAnswerComment): void
+    public function setSAGAnswerComment(?string $SAGAnswerComment): ProductReviewInterface
     {
         $this->SAGAnswerComment = $SAGAnswerComment;
+
+        return $this;
     }
 
     public function getSAGAnswerCreatedAt(): ?\DateTimeInterface
@@ -79,9 +49,11 @@ trait ProductReviewTrait
         return $this->SAGAnswerCreatedAt;
     }
 
-    public function setSAGAnswerCreatedAt(?\DateTimeInterface $SAGAnswerCreatedAt): void
+    public function setSAGAnswerCreatedAt(?\DateTimeInterface $SAGAnswerCreatedAt): ProductReviewInterface
     {
         $this->SAGAnswerCreatedAt = $SAGAnswerCreatedAt;
+
+        return $this;
     }
 
     public function getSAGCountryCode(): ?string
@@ -89,8 +61,10 @@ trait ProductReviewTrait
         return $this->SAGCountryCode;
     }
 
-    public function setSAGCountryCode(?string $SAGCountryCode): void
+    public function setSAGCountryCode(?string $SAGCountryCode): ProductReviewInterface
     {
         $this->SAGCountryCode = $SAGCountryCode;
+
+        return $this;
     }
 }

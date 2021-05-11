@@ -10,18 +10,18 @@ class ApiKey
     private $idSite;
 
     /** @var string */
-    private $languageCode;
+    private $countryCode;
 
     /** @var string */
     private $key;
 
     public function __construct(
         int $idSite,
-        string $languageCode,
+        string $countryCode,
         string $key
     ) {
         $this->idSite = $idSite;
-        $this->languageCode = $languageCode;
+        $this->countryCode = $countryCode;
         $this->key = $key;
     }
 
@@ -30,9 +30,9 @@ class ApiKey
         return $this->idSite;
     }
 
-    public function getLanguageCode(): string
+    public function getCountryCode(): string
     {
-        return $this->languageCode;
+        return $this->countryCode;
     }
 
     public function getKey(): string
@@ -44,7 +44,7 @@ class ApiKey
     {
         return implode('/', [
             $this->idSite,
-            $this->languageCode,
+            $this->countryCode,
             $this->key,
         ]);
     }

@@ -2,7 +2,9 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="dedi.sylius_sag_plugin.context.dedi_sag_context" class="Dedi\SyliusSAGPlugin\Context\DediSAGContext">
+        <service id="dedi.sylius_sag_plugin.context.dedi_sag_context"
+                 class="Dedi\SyliusSAGPlugin\Context\DediSAGContext"
+                 public="true">
             <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>
             <argument key="$certificateOfTruthContext" type="service" id="dedi.sylius_sag_plugin.context.certificate_of_truth_context"/>
         </service>
