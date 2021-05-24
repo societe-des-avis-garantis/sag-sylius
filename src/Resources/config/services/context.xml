@@ -13,6 +13,20 @@
             <argument key="$key" type="string">%env(resolve:DEDI_SAG_API_KEY)%</argument>
         </service>
 
+        <service id="dedi.sylius_sag_plugin.context.api_context" class="Dedi\SyliusSAGPlugin\Context\ApiContext">
+            <argument key="$checkTokenEndpoint" type="string">wp-content/plugins/ag-core/api/checkToken.php</argument>
+            <argument key="$orderExportEndpoint" type="string">wp-content/plugins/ag-core/api/bulkOrderInfos.php</argument>
+
+            <argument key="$frDomain" type="string">https://www.societe-des-avis-garantis.fr</argument>
+            <argument key="$enDomain" type="string">https://www.guaranteed-reviews.com</argument>
+            <argument key="$itDomain" type="string">https://www.societa-recensioni-garantite.it</argument>
+            <argument key="$esDomain" type="string">https://www.sociedad-de-opiniones-contrastadas.es</argument>
+            <argument key="$deDomain" type="string">https://www.g-g-b.de</argument>
+            <argument key="$defaultDomain" type="string">https://www.societe-des-avis-garantis.fr</argument>
+        </service>
+
+        <service id="dedi.sylius_sag_plugin.context.configuration_context" class="Dedi\SyliusSAGPlugin\Context\ConfigurationContext"/>
+
         <service id="dedi.sylius_sag_plugin.context.certificate_of_truth_context" class="Dedi\SyliusSAGPlugin\Context\CertificateOfTruthContext">
             <argument key="$certificateOfTruthLink" type="string">%env(resolve:DEDI_SAG_CERTIFICATE_OF_TRUTH_LINK)%</argument>
         </service>

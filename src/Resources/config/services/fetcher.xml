@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="dedi.sylius_sag_plugin.fetcher.orders_to_export_fetcher"
+                 class="Dedi\SyliusSAGPlugin\Fetcher\OrdersToExportFetcher">
+            <argument key="$orderRepository" type="service" id="sylius.repository.order"/>
+            <argument key="$configurationContext" type="service" id="dedi.sylius_sag_plugin.context.configuration_context"/>
+        </service>
+    </services>
+</container>

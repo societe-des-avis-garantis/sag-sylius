@@ -10,6 +10,14 @@ use Sylius\Component\Review\Model\ReviewInterface;
 
 interface ProductInterface extends BaseProductInterface
 {
+    public function getSAGEan13(): ?string;
+
+    public function setSAGEan13(?string $SAGEan13): self;
+
+    public function getSAGUpc(): ?string;
+
+    public function setSAGUpc(?string $SAGUpc): self;
+
     /**
      * @return Collection|ReviewInterface[]
      *

@@ -40,6 +40,10 @@ dedi_sylius_sag_shop:
 dedi_sylius_sag_admin:
     resource: "@DediSyliusSAGPlugin/Resources/config/admin_routing.yml"
     prefix: /admin
+
+dedi_sylius_sag_api:
+    resource: "@DediSyliusSAGPlugin/Resources/config/api_routing.yml"
+    prefix: /sag-api
 ```
 
 ## Configure your Product
@@ -71,7 +75,7 @@ sylius_product:
     resources:
         product:
             classes:
-                model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Product\Product
+                model: App\Entity\Product\Product
 ```
 
 ## Configure the ProductReview
@@ -117,12 +121,39 @@ sylius_review:
         product:
             review:
                 classes:
-                    model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Review\ProductReview
-                    repository: Tests\Dedi\SyliusSAGPlugin\Application\src\Repository\Review\ProductReviewRepository
+                    model: App\Entity\Review\ProductReview
+                    repository: App\Repository\Review\ProductReviewRepository
             reviewer:
                 classes:
                     # configure the reviewer with this entity otherwise it will use the Customer entity
                     model: Sylius\Component\Review\Model\Reviewer
+```
+
+## Configure the Order
+
+Your OrderRepository repository needs to implement the \Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryInterface interface and use the \Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryTrait trait.
+
+```php
+use Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryInterface as DediSAGOrderRepositoryInterface;
+use Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryTrait as DediSAGOrderRepositoryTrait;
+use Sylius\Bundle\CoreBundle\Doctrine\ORM\OrderRepository as BaseOrderRepository;
+
+class OrderRepository extends BaseOrderRepository implements DediSAGOrderRepositoryInterface
+{
+    use DediSAGOrderRepositoryTrait;
+}
+```
+
+Don't forget to update the Sylius resource config accordingly.
+
+```yaml
+# config/_sylius.yaml
+
+sylius_order:
+    resources:
+        order:
+            classes:
+                repository: App\Repository\Order\OrderRepository
 ```
 
 ### Create migration

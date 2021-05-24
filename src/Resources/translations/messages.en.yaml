@@ -7,3 +7,6 @@ dedi_sag_plugin:
         country_code: Country code
         show_reviews: Show reviews
         sag_logo: Guaranteed Reviews logo
+        product_identificiation: Product identification
+        ean13: ean13
+        upc: upc
