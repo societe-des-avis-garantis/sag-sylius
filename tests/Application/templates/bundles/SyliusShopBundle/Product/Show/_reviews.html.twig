@@ -1,0 +1,20 @@
+<div class="ui stackable grid segment">
+    <div class="row">
+        <div class="four wide column">
+            <img class="" src="{{ asset('bundles/dedisyliussagplugin/img/logo_badge_'~dediSag.countryCode~'.png') }}" alt="{{ 'dedi_sag_plugin.ui.sag_logo'|trans }}"/>
+        </div>
+        <div class="twelve wide column">
+            <div class="ui list">
+                <div class="item">
+                    {% include '@SyliusShop/Product/_starRating.html.twig' %}
+                </div>
+                <div class="item">
+                    <a href="{{ path('sylius_shop_product_review_index', {'slug': product.slug, '_locale': product.translation.locale}) }}">{{ product.acceptedReviewsByCountryCode(dediSag.countryCode)|length }} {{ 'sylius.ui.reviews'|trans }}</a>
+                </div>
+                <div class="item">
+                    <a class="ui small primary button" href="{{ path('sylius_shop_product_review_index', {'slug': product.slug, '_locale': product.translation.locale}) }}">{{ 'dedi_sag_plugin.ui.show_reviews'|trans }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

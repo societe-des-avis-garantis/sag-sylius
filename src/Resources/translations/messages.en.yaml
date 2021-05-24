@@ -5,3 +5,5 @@ dedi_sag_plugin:
         answer_comment: Answer
         answer_created_at: Answer date
         country_code: Country code
+        show_reviews: Show reviews
+        sag_logo: Guaranteed Reviews logo

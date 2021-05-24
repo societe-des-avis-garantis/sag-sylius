@@ -20,4 +20,19 @@ trait ProductTrait
             ;
         });
     }
+
+    public function getAverageRatingByCountryCode(
+        string $countryCode
+    ): float {
+        $reviews = $this->getAcceptedReviewsByCountryCode($countryCode);
+        if ($reviews->count() === 0) {
+            return 0;
+        }
+
+        $sum = array_reduce($reviews->toArray(), static function (int $carry, ReviewInterface $review) {
+            return $review->getRating() ? $carry + $review->getRating() : $carry;
+        }, 0);
+
+        return $sum / $reviews->count();
+    }
 }

@@ -18,4 +18,8 @@ interface ProductInterface extends BaseProductInterface
     public function getAcceptedReviewsByCountryCode(
         string $countryCode
     ): Collection;
+
+    public function getAverageRatingByCountryCode(
+        string $countryCode
+    ): float;
 }

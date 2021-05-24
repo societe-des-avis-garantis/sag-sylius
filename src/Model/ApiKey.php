@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Model;
 
+// todo https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/tutorials/embeddables.html
 class ApiKey
 {
     /** @var int */
