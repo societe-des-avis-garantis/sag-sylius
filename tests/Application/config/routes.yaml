@@ -1,9 +1,0 @@
-dedi_sylius_sag_shop:
-    resource: "@SyliusSAGPlugin/Resources/config/shop_routing.yml"
-    prefix: /{_locale}
-    requirements:
-        _locale: ^[a-z]{2}(?:_[A-Z]{2})?$
-
-dedi_sylius_sag_admin:
-    resource: "@SyliusSAGPlugin/Resources/config/admin_routing.yml"
-    prefix: /admin

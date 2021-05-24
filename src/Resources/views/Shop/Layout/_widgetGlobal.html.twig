@@ -1,0 +1,7 @@
+{% if dediSag.apiKey is not null %}
+    <script type="text/javascript">
+        var agSiteId="{{ dediSag.apiKey.idSite }}";
+    </script>
+    <script src="https://www.societe-des-avis-garantis.fr/wp-content/plugins/ag-core/widgets/JsWidget.js"
+            type="text/javascript"></script>
+{% endif %}
