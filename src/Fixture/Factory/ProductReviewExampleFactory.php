@@ -85,10 +85,7 @@ class ProductReviewExampleFactory extends BaseProductReviewExampleFactory
                 return $reviewer;
             })
             ->setDefault('SAGId', function (Options $options): string {
-                return sprintf(
-                    '#%s',
-                    $this->faker->numerify('######'),
-                );
+                return $this->faker->numerify('######');
             })
             ->setDefault('SAGAnswerComment', function (Options $options): string {
                 return $this->faker->paragraph;
