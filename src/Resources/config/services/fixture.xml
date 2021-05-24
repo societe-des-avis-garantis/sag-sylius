@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="dedi.sylius_sag_plugin.fixture.example_factory.product_review"
+                 class="Dedi\SyliusSAGPlugin\Fixture\Factory\ProductReviewExampleFactory"
+                 decorates="sylius.fixture.example_factory.product_review"
+                 parent="sylius.fixture.example_factory.product_review">
+        </service>
+    </services>
+</container>

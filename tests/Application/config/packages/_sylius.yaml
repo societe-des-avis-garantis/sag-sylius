@@ -15,6 +15,12 @@ sylius_shop:
     product_grid:
         include_all_descendants: true
 
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Product\Product
+
 sylius_review:
     resources:
         product:
@@ -22,3 +28,6 @@ sylius_review:
                 classes:
                     model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Review\ProductReview
                     repository: Tests\Dedi\SyliusSAGPlugin\Application\src\Repository\Review\ProductReviewRepository
+            reviewer:
+                classes:
+                    model: Sylius\Component\Review\Model\Reviewer

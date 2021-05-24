@@ -4,4 +4,4 @@ dedi_sag_plugin:
         sag_id: Id SAG
         answer_comment: Réponse
         answer_created_at: Date de réponse
-        country_code: Code pay
+        country_code: Code pays
