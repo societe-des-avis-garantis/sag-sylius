@@ -1,3 +1,7 @@
 dedi_sag_plugin:
     ui:
         footer_reassurance_link_sentance: Marchand approuvé par la Société des Avis Garantis, cliquez ici pour vérifier l'attestation.
+        sag_id: Id SAG
+        answer_comment: Réponse
+        answer_created_at: Date de réponse
+        country_code: Code pay

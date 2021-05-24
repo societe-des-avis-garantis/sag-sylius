@@ -28,6 +28,13 @@ final class DediSAGContext implements DediSAGContextInterface
         return $this->apiKeyContext->getApiKey();
     }
 
+    public function getCountryCode(): ?string
+    {
+        $apiKey = $this->getApiKey();
+
+        return null !== $apiKey ? $apiKey->getCountryCode() : null;
+    }
+
     public function getCertificateOfTruth(): ?CertificateOfTruth
     {
         return $this->certificateOfTruthContext->getCertificateOfTruth();

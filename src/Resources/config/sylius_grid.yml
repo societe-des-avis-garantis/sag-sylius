@@ -1,0 +1,64 @@
+sylius_grid:
+    grids:
+        sylius_admin_product_review:
+            fields:
+                SAGId:
+                    type: twig
+                    label: dedi_sag_plugin.ui.sag_id
+                    position: 0
+                    options:
+                        template: '@DediSyliusSAGPlugin/Admin/ProductReview/Grid/Field/SAGId.html.twig'
+                comment:
+                    label: sylius.ui.comment
+                    type: string
+                SAGAnswerComment:
+                    label: dedi_sag_plugin.ui.answer_comment
+                    type: string
+                SAGAnswerCreatedAt:
+                    label: dedi_sag_plugin.ui.answer_created_at
+                    type: datetime
+                SAGCountryCode:
+                    label: dedi_sag_plugin.ui.country_code
+                    type: twig
+                    options:
+                        template: '@DediSyliusSAGPlugin/Admin/ProductReview/Grid/Field/SAGCountryCode.html.twig'
+                title:
+                    enabled: false
+
+            filters:
+                rating:
+                    label: sylius.ui.rating
+                    type: select
+                    form_options:
+                        choices:
+                            0: 0
+                            1: 1
+                            2: 2
+                            3: 3
+                            4: 4
+                            5: 5
+                SAGCountryCode:
+                    label: dedi_sag_plugin.ui.country_code
+                    type: string
+                createdAt:
+                    label: sylius.ui.created_at
+                    type: date
+                SAGAnswerCreatedAt:
+                    label: dedi_sag_plugin.ui.answer_created_at
+                    type: date
+                title:
+                    enabled: false
+
+            actions:
+                item:
+                    update:
+                        enabled: false
+                    accept:
+                        enabled: false
+                    reject:
+                        enabled: false
+                    delete:
+                        enabled: false
+                bulk:
+                    delete:
+                        enabled: false

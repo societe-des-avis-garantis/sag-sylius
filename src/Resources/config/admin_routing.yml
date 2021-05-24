@@ -1,1 +1,25 @@
-# Define your own admin routes here
+# let's disable every possible action on the product review
+sylius_admin_product_review_update:
+    path: /product-reviews/{id}/edit
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController:redirectAction
+        route: ''
+
+sylius_admin_product_review_accept:
+    path: /product-reviews/{id}/accept
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController:redirectAction
+        route: ''
+
+sylius_admin_product_review_reject:
+    path: /product-reviews/{id}/reject
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController:redirectAction
+        route: ''
+
+sylius_admin_product_review_delete:
+    path: /product-reviews/{id}
+    methods: [DELETE]
+    defaults:
+        _controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController:redirectAction
+        route: ''

@@ -14,3 +14,11 @@ parameters:
 sylius_shop:
     product_grid:
         include_all_descendants: true
+
+sylius_review:
+    resources:
+        product:
+            review:
+                classes:
+                    model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Review\ProductReview
+                    repository: Tests\Dedi\SyliusSAGPlugin\Application\src\Repository\Review\ProductReviewRepository
