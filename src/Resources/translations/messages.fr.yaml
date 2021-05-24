@@ -5,3 +5,5 @@ dedi_sag_plugin:
         answer_comment: Réponse
         answer_created_at: Date de réponse
         country_code: Code pays
+        show_reviews: Voir les avis
+        sag_logo: Logo Société des Avis Garantis

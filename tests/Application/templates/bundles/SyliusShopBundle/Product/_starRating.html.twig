@@ -1,0 +1,8 @@
+<div id="average-rating"
+     class="ui star large rating"
+     data-rating="{{ product.averageRatingByCountryCode(dediSag.countryCode)|round }}"
+     data-max-rating="5"
+     data-average-rating="{{ product.averageRatingByCountryCode(dediSag.countryCode)|round(2) }}"
+     style="pointer-events: none;"
+     {{ sylius_test_html_attribute('average-rating', product.averageRatingByCountryCode(dediSag.countryCode)|round(2)) }}>
+</div>
