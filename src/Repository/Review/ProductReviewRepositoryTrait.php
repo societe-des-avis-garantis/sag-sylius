@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Repository\Review;
 
+use Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface;
+use Doctrine\ORM\AbstractQuery;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
+use Sylius\Component\Core\Model\Product;
+use Sylius\Component\Review\Model\Review;
 use Sylius\Component\Review\Model\ReviewInterface;
 
 trait ProductReviewRepositoryTrait
@@ -51,5 +55,55 @@ trait ProductReviewRepositoryTrait
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @param ProductReviewInterface[] $reviews
+     *
+     * @return void
+     */
+    public function bulkSave(array $reviews): void
+    {
+        $batchSize = 20;
+        $i = 1;
+
+        foreach ($reviews as $review) {
+            $review->setId($this->findIdForSagId($review->getSAGId()));
+
+            if (null !== $review->getId()) {
+                $this->_em->merge($review);
+            } else {
+                $this->_em->persist($review);
+            }
+
+            if (($i % $batchSize) === 0) {
+                $this->_em->flush();
+                $this->_em->clear();
+            }
+        }
+
+        $this->_em->flush();
+        $this->_em->clear();
+    }
+
+    protected function findIdForSagId(?string $SAGId): ?int
+    {
+        if (null === $SAGId) {
+            return null;
+        }
+
+        $id = $this->createQueryBuilder('o')
+            ->select('o.id')
+            ->andWhere('o.SAGId = :SAGId')
+            ->setParameter('SAGId', $SAGId)
+            ->getQuery()
+            ->getOneOrNullResult(AbstractQuery::HYDRATE_SINGLE_SCALAR)
+        ;
+
+        if (null === $id) {
+            return null;
+        }
+
+        return (int) $id;
     }
 }

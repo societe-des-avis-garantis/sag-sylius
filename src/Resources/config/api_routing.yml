@@ -1,3 +1,7 @@
 dedi_sylius_sag_api_orders:
     path: /orders
     controller: dedi.sylius_sag_plugin.controller.api.send_orders_to_api_action
+
+dedi_sylius_sag_api_reviews:
+    path: /reviews
+    controller: dedi.sylius_sag_plugin.controller.api.fetch_reviews_from_api_action

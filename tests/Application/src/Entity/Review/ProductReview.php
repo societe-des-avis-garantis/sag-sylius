@@ -16,4 +16,9 @@ use Sylius\Component\Core\Model\ProductReview as BaseProductReview;
 class ProductReview extends BaseProductReview implements DediSAGProductReviewInterface
 {
     use DediSAGProductReviewTrait;
+
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
 }

@@ -9,5 +9,12 @@
             <argument key="$ordersToExportFetcher" type="service" id="dedi.sylius_sag_plugin.fetcher.orders_to_export_fetcher"/>
             <argument key="$orderSender" type="service" id="dedi.sylius_sag_plugin.api.order_sender"/>
         </service>
+
+        <service id="dedi.sylius_sag_plugin.controller.api.fetch_reviews_from_api_action"
+                 class="Dedi\SyliusSAGPlugin\Controller\Api\FetchReviewsFromApiAction"
+                 public="true">
+            <argument key="$reviewFetcher" type="service" id="dedi.sylius_sag_plugin.api.review_fetcher"/>
+            <argument key="$productReviewRepository" type="service" id="sylius.repository.product_review"/>
+        </service>
     </services>
 </container>
