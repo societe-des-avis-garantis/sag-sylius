@@ -4,48 +4,52 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\ApiKey;
+use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
+use Dedi\SyliusSAGPlugin\Repository\Config\ApiKeyConfigRepositoryInterface;
+use Sylius\Component\Channel\Context\ChannelContextInterface;
+use Sylius\Component\Locale\Context\LocaleContextInterface;
 
 final class ApiKeyContext implements ApiKeyContextInterface
 {
-    /** @var ApiKey|null */
-    private $apiKey;
+    /** @var LocaleContextInterface */
+    private $localeContext;
+
+    /** @var ChannelContextInterface */
+    private $channelContext;
+
+    /** @var ApiKeyConfigRepositoryInterface */
+    private $apiKeyConfigRepository;
 
     public function __construct(
-        string $key
+        LocaleContextInterface $localeContext,
+        ChannelContextInterface $channelContext,
+        ApiKeyConfigRepositoryInterface $apiKeyConfigRepository
     ) {
-        if ('' === $key) {
-            $this->apiKey = null;
+        $this->localeContext = $localeContext;
+        $this->channelContext = $channelContext;
+        $this->apiKeyConfigRepository = $apiKeyConfigRepository;
+    }
 
-            return;
+    public function getApiKey(): ?ApiKeyInterface
+    {
+        $channelCode = $this->channelContext->getChannel()->getCode();
+        if (null === $channelCode) {
+            return null;
         }
 
-        if (false === preg_match('/^(\d+)\/([a-z]{2})\/(.+)$/', $key, $matches)) {
-            throw new \LogicException('Api Key does not have the correct format.');
-        }
-
-        $this->apiKey = new ApiKey(
-            (int) $matches[1],
-            $matches[2],
-            $matches[3]
+        return $this->apiKeyConfigRepository->findOneByLocaleCodeAndChannelCode(
+            $this->localeContext->getLocaleCode(),
+            $channelCode
         );
     }
 
-    public function getApiKey(): ?ApiKey
+    public function findApiKeyByCountryCode(string $code): ?ApiKeyInterface
     {
-        return $this->apiKey;
-    }
+        /** @var ?ApiKeyInterface $apiKey */
+        $apiKey =  $this->apiKeyConfigRepository->findOneBy([
+            'countryCode' => $code,
+        ]);
 
-    public function findApiKeyByCountryCode(string $code): ?ApiKey
-    {
-        if (null === $this->apiKey) {
-            return null;
-        }
-
-        if ($this->apiKey->getCountryCode() !== $code) {
-            return null;
-        }
-
-        return $this->apiKey;
+        return $apiKey;
     }
 }

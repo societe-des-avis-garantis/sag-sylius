@@ -238,14 +238,3 @@ Override sylius default templates.
 ```shell
 cp -R vendor/dedi/sylius-sag-plugin/test/Application/templates/* templates/
 ```
-
-## Configure env variables
-
-Add the followings to your `.env`, don't forget to use your values.
-
-```dotenv
-###> sag ###
-DEDI_SAG_API_KEY=
-DEDI_SAG_CERTIFICATE_OF_TRUTH_LINK=
-###< sag ###
-```

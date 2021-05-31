@@ -1,3 +1,21 @@
+dedi_sylius_sag_plugin_admin_api_key_config:
+    resource: |
+        alias: dedi_sylius_sag_plugin.api_key_config
+        section: admin
+        templates: "@SyliusAdmin\\Crud"
+        redirect: index
+        grid: dedi_sylius_sag_plugin_api_key_config
+        path: /sag/api-key-config
+        permission: true
+        vars:
+            all:
+                subheader: dedi_sylius_sag_plugin.ui.sag_configuration_description
+                templates:
+                    form: "@DediSyliusSAGPlugin/Admin/ApiKeyConfig/Crud/_form.html.twig"
+            index:
+                icon: comment alternate
+    type: sylius.resource
+
 # let's disable every possible action on the product review
 sylius_admin_product_review_update:
     path: /product-reviews/{id}/edit

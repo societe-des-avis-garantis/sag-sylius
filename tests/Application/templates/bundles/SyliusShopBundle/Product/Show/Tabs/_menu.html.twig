@@ -3,4 +3,8 @@
     <a class="item" data-tab="attributes" {{ sylius_test_html_attribute('tab', 'attributes') }}>{{ 'sylius.ui.attributes'|trans }}</a>
 {% endif %}
 
-<a class="item" data-tab="reviews">{{ 'sylius.ui.reviews'|trans }} ({{ product.acceptedReviewsByCountryCode(dediSag.countryCode)|length }})</a>
+{% if dediSag.countryCode %}
+    <a class="item" data-tab="reviews">{{ 'sylius.ui.reviews'|trans }} ({{ product.acceptedReviewsByCountryCode(dediSag.countryCode)|length }})</a>
+{% else %}
+    <a class="item" data-tab="reviews">{{ 'sylius.ui.reviews'|trans }} (0)</a>
+{% endif %}

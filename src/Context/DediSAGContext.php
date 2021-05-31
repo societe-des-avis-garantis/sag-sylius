@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\ApiKey;
-use Dedi\SyliusSAGPlugin\Model\CertificateOfTruth;
+use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
 
 final class DediSAGContext implements DediSAGContextInterface
 {
+    /** @var ApiContextInterface */
+    private $apiContext;
+
     /** @var ApiKeyContext */
     private $apiKeyContext;
 
@@ -16,14 +18,16 @@ final class DediSAGContext implements DediSAGContextInterface
     private $certificateOfTruthContext;
 
     public function __construct(
+        ApiContextInterface $apiContext,
         ApiKeyContext $apiKeyContext,
         CertificateOfTruthContextInterface $certificateOfTruthContext
     ) {
+        $this->apiContext = $apiContext;
         $this->apiKeyContext = $apiKeyContext;
         $this->certificateOfTruthContext = $certificateOfTruthContext;
     }
 
-    public function getApiKey(): ?ApiKey
+    public function getApiKey(): ?ApiKeyInterface
     {
         return $this->apiKeyContext->getApiKey();
     }
@@ -35,8 +39,18 @@ final class DediSAGContext implements DediSAGContextInterface
         return null !== $apiKey ? $apiKey->getCountryCode() : null;
     }
 
-    public function getCertificateOfTruth(): ?CertificateOfTruth
+    public function getCertificateOfTruthUrl(): ?string
     {
-        return $this->certificateOfTruthContext->getCertificateOfTruth();
+        return $this->certificateOfTruthContext->getCertificateOfTruthUrl();
+    }
+
+    public function getApiDomain(): ?string
+    {
+        $countryCode = $this->getCountryCode();
+        if (null === $countryCode) {
+            return null;
+        }
+
+        return $this->apiContext->getDomain($countryCode);
     }
 }

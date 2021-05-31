@@ -17,8 +17,10 @@
             <div class="sylius-product-price" {{ sylius_test_html_attribute('product-price') }}>{{ money.calculatePrice(product|sylius_resolve_variant) }}</div>
         {% endif %}
     </div>
-    <div class="extra center aligned" {{ sylius_test_html_attribute('product-extra-rating') }}>
-        {% include '@SyliusShop/Product/_starRating.html.twig' %}
-        {{ product.acceptedReviewsByCountryCode(dediSag.countryCode)|length }} {{ 'sylius.ui.reviews'|trans }}
-    </div>
+    {% if dediSag.countryCode %}
+        <div class="extra center aligned" {{ sylius_test_html_attribute('product-extra-rating') }}>
+            {% include '@SyliusShop/Product/_starRating.html.twig' %}
+            {{ product.acceptedReviewsByCountryCode(dediSag.countryCode)|length }} {{ 'sylius.ui.reviews'|trans }}
+        </div>
+    {% endif %}
 </div>

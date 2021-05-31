@@ -1,5 +1,44 @@
 sylius_grid:
     grids:
+        dedi_sylius_sag_plugin_api_key_config:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: Dedi\SyliusSAGPlugin\Entity\ApiKeyConfig
+            fields:
+                countryCode:
+                    label: dedi_sylius_sag_plugin.ui.country_code
+                    type: twig
+                    options:
+                        template: '@DediSyliusSAGPlugin/Admin/Common/Grid/Field/SAGCountryCode.html.twig'
+                apiKey:
+                    label: dedi_sylius_sag_plugin.ui.api_key
+                    type: string
+                certificateOfTruthUrl:
+                    label: dedi_sylius_sag_plugin.ui.certificate_of_truth_url
+                    type: twig
+                    options:
+                        template: '@DediSyliusSAGPlugin/Admin/ApiKeyConfig/Grid/Field/certificateOfTruthUrl.html.twig'
+                locales:
+                    label: sylius.ui.locales
+                    type: twig
+                    options:
+                        template: '@DediSyliusSAGPlugin/Admin/ApiKeyConfig/Grid/Field/locales.html.twig'
+                channels:
+                    label: sylius.ui.channels
+                    type: twig
+                    options:
+                        template: '@DediSyliusSAGPlugin/Admin/ApiKeyConfig/Grid/Field/channels.html.twig'
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+
         sylius_admin_product_review:
             fields:
                 SAGId:
@@ -21,7 +60,7 @@ sylius_grid:
                     label: dedi_sylius_sag_plugin.ui.country_code
                     type: twig
                     options:
-                        template: '@DediSyliusSAGPlugin/Admin/ProductReview/Grid/Field/SAGCountryCode.html.twig'
+                        template: '@DediSyliusSAGPlugin/Admin/Common/Grid/Field/SAGCountryCode.html.twig'
                 author:
                     label: sylius.ui.author
                     type: twig

@@ -1,4 +1,4 @@
-dedi_sag_plugin:
+dedi_sylius_sag_plugin:
     ui:
         footer_reassurance_link_sentance: Merchant approved by Guaranteed Reviews, click here to view the certification.
         sag_id: SAG Id
@@ -10,3 +10,18 @@ dedi_sag_plugin:
         product_identificiation: Product identification
         ean13: ean13
         upc: upc
+        api_key_configs: SAG Api keys
+        sag_configuration: SAG Configuration
+        sag_configuration_description: Configure you api keys
+        api_key: Api key
+        certificate_of_truth_url: Link to certificate
+        certificate_of_truth: Certificate
+        edit_api_key_config: Edit an api key configuration
+        new_api_key_config: Create an api key configuration
+
+    form:
+        id_site: Id site
+        country_code: Country code
+        key: Key
+        locales: Enabled for the follwing locales
+        channels: Enabled for the follwing channels

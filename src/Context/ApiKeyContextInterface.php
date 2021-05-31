@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\ApiKey;
+use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
 
 interface ApiKeyContextInterface
 {
-    public function getApiKey(): ?ApiKey;
+    public function getApiKey(): ?ApiKeyInterface;
 
-    public function findApiKeyByCountryCode(string $code): ?ApiKey;
+    public function findApiKeyByCountryCode(string $code): ?ApiKeyInterface;
 }
