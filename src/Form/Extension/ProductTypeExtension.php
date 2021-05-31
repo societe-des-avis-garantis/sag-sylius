@@ -16,11 +16,11 @@ final class ProductTypeExtension extends AbstractTypeExtension
         $builder
             ->add('SAGEan13', TextType::class, [
                 'required' => false,
-                'label' => 'dedi_sag_plugin.ui.ean13',
+                'label' => 'dedi_sylius_sag_plugin.ui.ean13',
             ])
             ->add('SAGUpc', TextType::class, [
                 'required' => false,
-                'label' => 'dedi_sag_plugin.ui.upc',
+                'label' => 'dedi_sylius_sag_plugin.ui.upc',
             ])
         ;
     }
