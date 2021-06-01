@@ -1,0 +1,44 @@
+<div class="comment" {{ sylius_test_html_attribute('comment', review.comment) }}>
+    <div class="content">
+        <a class="author"><i class="user icon"></i> {{ review.author.firstName }} {{ review.author.lastName|first|upper }}.</a>
+
+        <div class="metadata">
+            <div class="rating">
+                <div class="ui star rating" data-rating="{{ review.rating }}" data-max-rating="5" style="pointer-events: none;"></div>
+            </div>
+
+            <div class="date">
+                {{ 'dedi_sylius_sag_plugin.ui.published_at'|trans({
+                    '%date%': review.createdAt|format_datetime('short', 'short')
+                }) }}
+
+                {% if review.SAGOrderedAt %}
+                    ({{ 'dedi_sylius_sag_plugin.ui.ordered_on_date'|trans({
+                        '%date%': review.SAGOrderedAt|format_date('short')
+                    }) }})
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="text">{{ review.comment }}</div>
+
+        {% if review.SAGAnswerComment %}
+            <div class="comments">
+                <div class="comment">
+                    <div class="content">
+                        <a class="author"><i class="user icon"></i> Jenny Hess</a>
+                        <div class="metadata">
+                            <div class="date">
+                                {{ 'dedi_sylius_sag_plugin.ui.published_at'|trans({
+                                    '%date%': review.SAGAnswerCreatedAt|format_datetime('short', 'short')
+                                }) }}
+                            </div>
+                        </div>
+                        <div class="text">{{ review.SAGAnswerComment }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+

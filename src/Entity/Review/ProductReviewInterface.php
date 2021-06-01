@@ -22,6 +22,10 @@ interface ProductReviewInterface extends ReviewInterface
 
     public function setSAGAnswerCreatedAt(?\DateTimeInterface $SAGAnswerCreatedAt): self;
 
+    public function getSAGOrderedAt(): ?\DateTimeInterface;
+
+    public function setSAGOrderedAt(?\DateTimeInterface $SAGOrderedAt): self;
+
     public function getSAGCountryCode(): ?string;
 
     public function setSAGCountryCode(?string $SAGCountryCode): self;

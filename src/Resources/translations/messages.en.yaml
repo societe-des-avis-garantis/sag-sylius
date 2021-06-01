@@ -10,6 +10,12 @@ dedi_sylius_sag_plugin:
         product_identificiation: Product identification
         ean13: ean13
         upc: upc
+        see_certificate: See certificate
+        bar_chart_title: Distribution of scores for %product_name%
+        based_on_x_reviews: 'Based on %count% review.|Based on %count% reviews.'
+        published_at: Published on the %date%
+        ordered_on_date: Ordered on the %date%
+        ordered_at: Ordered at
         api_key_configs: SAG Api keys
         sag_configuration: SAG Configuration
         sag_configuration_description: Configure you api keys

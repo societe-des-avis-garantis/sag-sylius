@@ -132,6 +132,7 @@ class ReviewFetcher implements ReviewFetcherInterface
                     (int) $datum['review_status'],
                     null === $datum['answer_text'] ? null : (string) $datum['answer_text'],
                     array_key_exists('answer_date_time', $datum) && null !== $datum['answer_date_time'] ? new \DateTimeImmutable((string) $datum['answer_date_time']) : null,
+                    array_key_exists('order_date', $datum) && null !== $datum['order_date'] ? new \DateTimeImmutable((string) $datum['order_date']) : null,
                     (string) $datum['lang']
                 );
 

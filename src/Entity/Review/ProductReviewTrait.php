@@ -17,6 +17,9 @@ trait ProductReviewTrait
     /** @ORM\Column(type="datetime", name="sag_answer_created_at", nullable=true) */
     protected $SAGAnswerCreatedAt;
 
+    /** @ORM\Column(type="datetime", name="sag_ordered_at", nullable=true) */
+    protected $SAGOrderedAt;
+
     /** @ORM\Column(type="string", name="sag_country_code", nullable=true) */
     protected $SAGCountryCode;
 
@@ -52,6 +55,18 @@ trait ProductReviewTrait
     public function setSAGAnswerCreatedAt(?\DateTimeInterface $SAGAnswerCreatedAt): ProductReviewInterface
     {
         $this->SAGAnswerCreatedAt = $SAGAnswerCreatedAt;
+
+        return $this;
+    }
+
+    public function getSAGOrderedAt(): ?\DateTimeInterface
+    {
+        return $this->SAGOrderedAt;
+    }
+
+    public function setSAGOrderedAt(?\DateTimeInterface $SAGOrderedAt): ProductReviewInterface
+    {
+        $this->SAGOrderedAt = $SAGOrderedAt;
 
         return $this;
     }

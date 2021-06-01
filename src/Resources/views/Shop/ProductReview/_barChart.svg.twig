@@ -1,0 +1,39 @@
+{% macro bar(rating, max, star) %}
+    {% if max == 0 %}
+        {% set barHeight = 0 %}
+    {% else %}
+        {% set barHeight = ((rating / max) * 100) | round %}
+    {% endif %}
+
+    <g class="bar" transform="translate({{ 30 * (star - 1) }}, 0)">
+        <text text-anchor="middle" alignment-baseline="baseline" x="10" y="{{ 115 - barHeight }}" class="stat">{{ rating }}</text>
+        <rect height="{{ barHeight }}" y="{{ 120 - barHeight }}" width="20"/>
+        <text text-anchor="middle" alignment-baseline="hanging" x="10" y="125" class="legend">{{ star }}★</text>
+    </g>
+{% endmacro %}
+
+<svg version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     height="140"
+     width="140"
+     aria-labelledby="title"
+     role="img">
+    <title id="title">{{ title }}</title>
+
+    <style>
+        .bar, .legend {
+            fill: #f5d700;
+        }
+        .stat {
+            fill: #777;
+            font-size: 0.8em;
+        }
+    </style>
+
+    {% set max = max(ratings) %}
+
+    {% for rating in ratings %}
+        {{ _self.bar(rating, max, loop.index) }}
+    {% endfor %}
+</svg>

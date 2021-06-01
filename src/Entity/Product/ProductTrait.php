@@ -53,7 +53,8 @@ trait ProductTrait
     }
 
     public function getAverageRatingByCountryCode(
-        string $countryCode
+        string $countryCode,
+        int $outOf = 5
     ): float {
         $reviews = $this->getAcceptedReviewsByCountryCode($countryCode);
         if ($reviews->count() === 0) {
@@ -64,6 +65,21 @@ trait ProductTrait
             return $review->getRating() ? $carry + $review->getRating() : $carry;
         }, 0);
 
-        return $sum / $reviews->count();
+        return (($sum / $reviews->count()) * $outOf) / 5;
+    }
+
+    public function getReviewRatingsRepartitionByCountryCode(
+        string $countryCode
+    ): array {
+        $reviewValuesCount = array_fill(1, 5, 0);
+
+        $reviews = $this->getAcceptedReviewsByCountryCode($countryCode);
+
+        /** @var ProductReviewInterface $review */
+        foreach ($reviews->toArray() as $review) {
+            $reviewValuesCount[$review->getRating()]++;
+        }
+
+        return $reviewValuesCount;
     }
 }

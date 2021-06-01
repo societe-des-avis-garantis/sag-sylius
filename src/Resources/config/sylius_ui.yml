@@ -11,11 +11,17 @@ sylius_ui:
 
         sylius.shop.product.show.tab_reviews:
             blocks:
+                statistics:
+                    template: '@DediSyliusSAGPlugin/Shop/Product/Show/Tabs/Reviews/_statistics.html.twig'
+                    priority: 40
                 create:
                     enabled: false
 
         sylius.shop.product_review.index.list:
             blocks:
+                statistics:
+                    template: '@DediSyliusSAGPlugin/Shop/ProductReview/_statistics.html.twig'
+                    priority: 30
                 dedi_sag_pagination:
                     template: '@DediSyliusSAGPlugin/Shop/ProductReview/_pagination.html.twig'
                     priority: 5
