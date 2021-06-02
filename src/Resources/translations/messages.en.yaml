@@ -8,8 +8,6 @@ dedi_sylius_sag_plugin:
         show_reviews: Show reviews
         sag_logo: Guaranteed Reviews logo
         product_identificiation: Product identification
-        ean13: ean13
-        upc: upc
         see_certificate: See certificate
         bar_chart_title: Distribution of scores for %product_name%
         based_on_x_reviews: 'Based on %count% review.|Based on %count% reviews.'
@@ -24,6 +22,7 @@ dedi_sylius_sag_plugin:
         certificate_of_truth: Certificate
         edit_api_key_config: Edit an api key configuration
         new_api_key_config: Create an api key configuration
+        sag_channel_configuration: SAG Configuration
 
     form:
         id_site: Id site
@@ -31,3 +30,7 @@ dedi_sylius_sag_plugin:
         key: Key
         locales: Enabled for the follwing locales
         channels: Enabled for the follwing channels
+        ean13: ean13
+        upc: upc
+        show_iframe_widget: Show iframe widget
+        show_footer_certificate_link: Show footer certificate link

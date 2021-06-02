@@ -29,6 +29,18 @@ sylius_ui:
                 add_button:
                     enabled: false
 
+        sylius.admin.channel.create.form:
+            blocks:
+                dedi_sag_configuration:
+                    template: '@DediSyliusSAGPlugin/Admin/Channel/_configuration.html.twig'
+                    priority: 20
+
+        sylius.admin.channel.update.form:
+            blocks:
+                dedi_sag_configuration:
+                    template: '@DediSyliusSAGPlugin/Admin/Channel/_configuration.html.twig'
+                    priority: 20
+
         sylius.admin.product.create.tab_details:
             blocks:
                 dedi_sag_identificiation:

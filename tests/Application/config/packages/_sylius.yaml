@@ -15,6 +15,12 @@ sylius_shop:
     product_grid:
         include_all_descendants: true
 
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Channel\Channel
+
 sylius_product:
     resources:
         product:
