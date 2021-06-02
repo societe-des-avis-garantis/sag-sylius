@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
+use Dedi\SyliusSAGPlugin\Entity\ApiKeyConfigInterface;
 use Dedi\SyliusSAGPlugin\Repository\Config\ApiKeyConfigRepositoryInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Sylius\Component\Locale\Context\LocaleContextInterface;
@@ -30,7 +30,7 @@ final class ApiKeyContext implements ApiKeyContextInterface
         $this->apiKeyConfigRepository = $apiKeyConfigRepository;
     }
 
-    public function getApiKey(): ?ApiKeyInterface
+    public function getApiKey(): ?ApiKeyConfigInterface
     {
         $channelCode = $this->channelContext->getChannel()->getCode();
         if (null === $channelCode) {
@@ -43,9 +43,9 @@ final class ApiKeyContext implements ApiKeyContextInterface
         );
     }
 
-    public function findApiKeyByCountryCode(string $code): ?ApiKeyInterface
+    public function findApiKeyByCountryCode(string $code): ?ApiKeyConfigInterface
     {
-        /** @var ?ApiKeyInterface $apiKey */
+        /** @var ?ApiKeyConfigInterface $apiKey */
         $apiKey =  $this->apiKeyConfigRepository->findOneBy([
             'countryCode' => $code,
         ]);

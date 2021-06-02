@@ -1,14 +1,41 @@
-<div class="ui grid">
-    <div class="three column row">
-        <div class="column">{{ form_row(form.idSite) }}</div>
-        <div class="column">{{ form_row(form.countryCode) }}</div>
-        <div class="column">{{ form_row(form.key) }}</div>
+<h4 class="ui top attached large header">{{ 'dedi_sylius_sag_plugin.ui.api_key'|trans }}</h4>
+<div class="ui attached segment">
+    <div class="ui grid">
+        <div class="three column row">
+            <div class="column">{{ form_row(form.idSite) }}</div>
+            <div class="column">{{ form_row(form.countryCode) }}</div>
+            <div class="column">{{ form_row(form.key) }}</div>
+        </div>
     </div>
 </div>
 
+<div class="ui hidden divider"></div>
+
 <div class="ui grid">
     <div class="two column row">
-        <div class="column">{{ form_row(form.locales) }}</div>
-        <div class="column">{{ form_row(form.channels) }}</div>
+        <div class="column">
+            <h4 class="ui top attached large header">{{ 'dedi_sylius_sag_plugin.ui.exported_orders_status'|trans }}</h4>
+            <div class="ui attached segment">
+                <div class="ui grid">
+                    <div class="two column row">
+                        <div class="column">{{ form_row(form.orderStatesToExport) }}</div>
+                        <div class="column">{{ form_row(form.orderPaymentStatesToExport) }}</div>
+                        <div class="column">{{ form_row(form.orderShippingStatesToExport) }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <h4 class="ui top attached large header">{{ 'dedi_sylius_sag_plugin.ui.general'|trans }}</h4>
+            <div class="ui attached segment">
+                <div class="ui grid">
+                    <div class="two column row">
+                        <div class="column">{{ form_row(form.locales) }}</div>
+                        <div class="column">{{ form_row(form.channels) }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

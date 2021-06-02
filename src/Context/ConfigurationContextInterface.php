@@ -8,9 +8,13 @@ interface ConfigurationContextInterface
 {
     public function getOrderStatesToExport(): array;
 
-    public function getOrderCheckoutStatesToExport(): array;
-
     public function getOrderPaymentStatesToExport(): array;
 
     public function getOrderShippingStatesToExport(): array;
+
+    public function getAvailableOrderStatesToExport(): array;
+
+    public function getAvailableOrderPaymentStatesToExport(): array;
+
+    public function getAvailableOrderShippingStatesToExport(): array;
 }

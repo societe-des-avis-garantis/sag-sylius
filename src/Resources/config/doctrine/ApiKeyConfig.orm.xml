@@ -15,6 +15,9 @@
         <field name="countryCode" column="country_code" type="string" nullable="false"/>
         <field name="key" column="api_key" type="string" nullable="false"/>
         <field name="certificateOfTruthUrl" column="certificate_of_truth_url" type="string" nullable="true"/>
+        <field name="orderStatesToExport" column="order_states_to_export" type="simple_array" nullable="true"/>
+        <field name="orderPaymentStatesToExport" column="order_payment_states_to_export" type="simple_array" nullable="true"/>
+        <field name="orderShippingStatesToExport" column="order_shipping_states_to_export" type="simple_array" nullable="true"/>
 
         <many-to-many field="locales" target-entity="Sylius\Component\Locale\Model\LocaleInterface" fetch="EAGER">
             <join-table name="dedi_sag_plugin_api_key_config_locales">

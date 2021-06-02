@@ -18,6 +18,8 @@ dedi_sylius_sag_plugin:
         sag_configuration: SAG Configuration
         sag_configuration_description: Configure you api keys
         api_key: Api key
+        exported_orders_status: Order exports
+        general: General
         certificate_of_truth_url: Link to certificate
         certificate_of_truth: Certificate
         edit_api_key_config: Edit an api key configuration
@@ -34,3 +36,6 @@ dedi_sylius_sag_plugin:
         upc: upc
         show_iframe_widget: Show iframe widget
         show_footer_certificate_link: Show footer certificate link
+        order_states_to_export: Status of orders to export
+        order_payment_states_to_export: Payment status of orders to export
+        order_shipping_states_to_export: Shipping status of orders to export
