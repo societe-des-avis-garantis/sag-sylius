@@ -25,6 +25,7 @@ dedi_sylius_sag_plugin:
         edit_api_key_config: Modifier une configuration de clé d'api
         new_api_key_config: Créer une configuration de clé d'api
         sag_channel_configuration: Configuration SAG
+        merchant_answer: Réponse du marchand
 
     form:
         id_site: Id site
