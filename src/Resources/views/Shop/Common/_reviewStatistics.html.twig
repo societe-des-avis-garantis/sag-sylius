@@ -1,4 +1,4 @@
-{% set reviewCount = product.acceptedReviewsByCountryCode(dediSag.countryCode)|length %}
+{% set reviewCount = product.countReviewsForCountryCode(dediSag.countryCode) %}
 
 {% if reviewCount > 0 %}
     <div class="ui centered grid">

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Entity\Product;
 
+use Dedi\SyliusSAGPlugin\Entity\RepartitionOfScoresInterface;
 use Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Review\Model\ReviewInterface;
@@ -16,6 +18,15 @@ trait ProductTrait
 
     /** @ORM\Column(type="string", name="sag_upc", nullable=true) */
     protected $SAGUpc;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Dedi\SyliusSAGPlugin\Entity\RepartitionOfScores", mappedBy="product")
+     */
+    protected $repartionsOfScores;
+
+    public function __construct() {
+        $this->repartionsOfScores = new ArrayCollection();
+    }
 
     public function getSAGEan13(): ?string
     {
@@ -41,46 +52,63 @@ trait ProductTrait
         return $this;
     }
 
+    public function getRepartitionOfScoresByCountryCode(
+        ?string $countryCode
+    ): ?RepartitionOfScoresInterface {
+        $repartitionOfScores = $this->repartionsOfScores->filter(static function (RepartitionOfScoresInterface $repartitionOfScores) use($countryCode): bool {
+            return $repartitionOfScores->getCountryCode() === $countryCode;
+        })->first();
+
+        if (false === $repartitionOfScores) {
+            return null;
+        }
+
+        return $repartitionOfScores;
+    }
+
+    public function getAverageRatingByCountryCode(
+        ?string $countryCode,
+        int $outOf = 5
+    ): float {
+        $repartitionOfScores = $this->getRepartitionOfScoresByCountryCode($countryCode);
+        if (null === $repartitionOfScores) {
+            return 0;
+        }
+
+        return $repartitionOfScores->getAverageRating($outOf);
+    }
+
+    public function countReviewsForCountryCode(
+        ?string $countryCode
+    ): float {
+        $repartitionOfScores = $this->getRepartitionOfScoresByCountryCode($countryCode);
+        if (null === $repartitionOfScores) {
+            return 0;
+        }
+
+        return $repartitionOfScores->countReviews();
+    }
+
+    public function getReviewRatingsRepartitionByCountryCode(
+        ?string $countryCode
+    ): array {
+        $repartitionOfScores = $this->getRepartitionOfScoresByCountryCode($countryCode);
+        if (null === $repartitionOfScores) {
+            return array_fill(1, 5, 0);
+        }
+
+        return $repartitionOfScores->toArrayRepartition();
+    }
+
     public function getAcceptedReviewsByCountryCode(
-        string $countryCode
+        ?string $countryCode
     ): Collection {
         return $this->reviews->filter(function (ProductReviewInterface $review) use($countryCode) : bool {
             return
                 null !== $review->getSAGId() &&
                 ReviewInterface::STATUS_ACCEPTED === $review->getStatus() &&
                 $countryCode === $review->getSAGCountryCode()
-            ;
+                ;
         });
-    }
-
-    public function getAverageRatingByCountryCode(
-        string $countryCode,
-        int $outOf = 5
-    ): float {
-        $reviews = $this->getAcceptedReviewsByCountryCode($countryCode);
-        if ($reviews->count() === 0) {
-            return 0;
-        }
-
-        $sum = array_reduce($reviews->toArray(), static function (int $carry, ReviewInterface $review) {
-            return $review->getRating() ? $carry + $review->getRating() : $carry;
-        }, 0);
-
-        return (($sum / $reviews->count()) * $outOf) / 5;
-    }
-
-    public function getReviewRatingsRepartitionByCountryCode(
-        string $countryCode
-    ): array {
-        $reviewValuesCount = array_fill(1, 5, 0);
-
-        $reviews = $this->getAcceptedReviewsByCountryCode($countryCode);
-
-        /** @var ProductReviewInterface $review */
-        foreach ($reviews->toArray() as $review) {
-            $reviewValuesCount[$review->getRating()]++;
-        }
-
-        return $reviewValuesCount;
     }
 }

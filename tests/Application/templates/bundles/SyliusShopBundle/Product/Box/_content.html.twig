@@ -18,7 +18,7 @@
         {% endif %}
     </div>
     {% if dediSag.countryCode %}
-        {% set reviewCount = product.acceptedReviewsByCountryCode(dediSag.countryCode)|length %}
+        {% set reviewCount = product.countReviewsForCountryCode(dediSag.countryCode) %}
 
         {% if reviewCount > 0 %}
             <div class="extra center aligned" {{ sylius_test_html_attribute('product-extra-rating') }}>

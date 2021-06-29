@@ -80,12 +80,10 @@ trait ProductReviewRepositoryTrait
 
             if (($i % $batchSize) === 0) {
                 $this->_em->flush();
-                $this->_em->clear();
             }
         }
 
         $this->_em->flush();
-        $this->_em->clear();
     }
 
     protected function findIdForSagId(?string $SAGId): ?int

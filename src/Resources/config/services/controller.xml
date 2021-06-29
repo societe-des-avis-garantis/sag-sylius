@@ -15,6 +15,7 @@
                  public="true">
             <argument key="$reviewFetcher" type="service" id="dedi.sylius_sag_plugin.api.review_fetcher"/>
             <argument key="$productReviewRepository" type="service" id="sylius.repository.product_review"/>
+            <argument key="$repartitionOfScoresUpdater" type="service" id="dedi.sylius_sag_plugin.updater.repartition_of_scores_updater" />
         </service>
     </services>
 </container>
