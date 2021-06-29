@@ -36,3 +36,4 @@ sylius_shop_product_review_index:
                     - "expr:service('sylius.context.locale').getLocaleCode()"
                     - "expr:service('dedi.sylius_sag_plugin.context.dedi_sag_context').getCountryCode()"
             paginate: 10
+

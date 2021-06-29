@@ -22,6 +22,7 @@ trait ProductReviewRepositoryTrait
         $queryBuilder = $this->createQueryBuilder('o')
             ->innerJoin('o.reviewSubject', 'product')
             ->innerJoin('product.translations', 'translation')
+            ->andWhere('o.SAGId is not null')
             ->andWhere('translation.locale = :locale')
             ->andWhere('translation.slug = :slug')
             ->andWhere('o.status = :status')
@@ -44,6 +45,7 @@ trait ProductReviewRepositoryTrait
         ?string $countryCode
     ): array {
         return $this->createQueryBuilder('o')
+            ->andWhere('o.SAGId is not null')
             ->andWhere('o.reviewSubject = :productId')
             ->andWhere('o.status = :status')
             ->andWhere('o.SAGCountryCode = :countryCode')

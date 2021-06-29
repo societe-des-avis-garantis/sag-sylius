@@ -46,6 +46,7 @@ trait ProductTrait
     ): Collection {
         return $this->reviews->filter(function (ProductReviewInterface $review) use($countryCode) : bool {
             return
+                null !== $review->getSAGId() &&
                 ReviewInterface::STATUS_ACCEPTED === $review->getStatus() &&
                 $countryCode === $review->getSAGCountryCode()
             ;
