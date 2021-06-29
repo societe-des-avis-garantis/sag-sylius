@@ -7,6 +7,7 @@ namespace Dedi\SyliusSAGPlugin\Entity;
 use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
 use Dedi\SyliusSAGPlugin\Model\CertificateOfTruthAwareInterface;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -60,4 +61,12 @@ interface ApiKeyConfigInterface extends ResourceInterface, ApiKeyInterface, Cert
     public function removeLocale(LocaleInterface $locale): self;
 
     public function hasLocale(LocaleInterface $locale): bool;
+
+    public function getChannels(): Collection;
+
+    public function addChannel(ChannelInterface $channel): self;
+
+    public function removeChannel(ChannelInterface $channel): self;
+
+    public function hasChannel(ChannelInterface $channel): bool;
 }

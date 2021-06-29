@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="dedi.sylius_sag_plugin.validator.api_key_config_is_unique_for_locales_and_channels_validator"
+                 class="Dedi\SyliusSAGPlugin\Validator\ApiKeyConfigIsUniqueForLocalesAndChannelsValidator">
+            <argument key="$apiKeyConfigRepository" type="service" id="dedi_sylius_sag_plugin.repository.api_key_config" />
+
+            <tag name="validator.constraint_validator" />
+        </service>
+    </services>
+</container>

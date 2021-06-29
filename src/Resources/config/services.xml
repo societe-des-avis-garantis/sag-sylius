@@ -12,5 +12,6 @@
         <import resource="services/form.xml"/>
         <import resource="services/menu.xml"/>
         <import resource="services/specification.xml"/>
+        <import resource="services/validators.xml"/>
     </imports>
 </container>

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Dedi\SyliusSAGPlugin\Form\Type;
 
 use Dedi\SyliusSAGPlugin\Context\ConfigurationContextInterface;
+use Dedi\SyliusSAGPlugin\Validator\ApiKeyConfigIsUniqueForLocalesAndChannels;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\LocaleBundle\Form\Type\LocaleChoiceType;
 use Symfony\Component\Form\AbstractType;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ApiKeyConfigType extends AbstractType
 {
@@ -85,6 +87,16 @@ final class ApiKeyConfigType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver
+            ->setDefault('constraints', [
+                new ApiKeyConfigIsUniqueForLocalesAndChannels(['groups' => ['default', 'sylius']]),
+            ])
+            ->setDefault('validation_groups', ['default', 'sylius'])
         ;
     }
 }
