@@ -35,6 +35,7 @@ dedi_sylius_sag_plugin:
         channels: Activé pour les cannaux suivante
         ean13: ean13
         upc: upc
+        show_javascript_widget: Affichage du widget javascript
         show_iframe_widget: Affichage du widget iframe
         show_footer_certificate_link: Affichage du certificat en pied de page
         order_states_to_export: Satuts des commandes à exporter

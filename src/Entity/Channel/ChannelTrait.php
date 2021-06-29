@@ -8,11 +8,26 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait ChannelTrait
 {
+    /** @ORM\Column(type="boolean", name="sag_show_javascript_widget", nullable=false, options={"default" : 1}) */
+    protected $SAGShowJavascriptWidget;
+
     /** @ORM\Column(type="boolean", name="sag_show_iframe_widget", nullable=false, options={"default" : 1}) */
     protected $SAGShowIframeWidget;
 
     /** @ORM\Column(type="boolean", name="sag_show_footer_certificate_link", nullable=false, options={"default" : 1}) */
     protected $SAGShowFooterCertificateLink;
+
+    public function getSAGShowJavascriptWidget(): bool
+    {
+        return $this->SAGShowJavascriptWidget;
+    }
+
+    public function setSAGShowJavascriptWidget(bool $SAGShowJavascriptWidget): ChannelInterface
+    {
+        $this->SAGShowJavascriptWidget = $SAGShowJavascriptWidget;
+
+        return $this;
+    }
 
     public function getSAGShowIframeWidget(): bool
     {

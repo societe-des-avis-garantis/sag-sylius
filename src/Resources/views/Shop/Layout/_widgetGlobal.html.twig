@@ -1,4 +1,4 @@
-{% if dediSag.apiKey is not null %}
+{% if sylius.channel.SAGShowJavascriptWidget and dediSag.apiKey is not null %}
     <script type="text/javascript">
         var agSiteId="{{ dediSag.apiKey.idSite }}";
     </script>
