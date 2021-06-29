@@ -18,9 +18,15 @@
         {% endif %}
     </div>
     {% if dediSag.countryCode %}
-        <div class="extra center aligned" {{ sylius_test_html_attribute('product-extra-rating') }}>
-            {% include '@SyliusShop/Product/_starRating.html.twig' %}
-            {{ product.acceptedReviewsByCountryCode(dediSag.countryCode)|length }} {{ 'sylius.ui.reviews'|trans }}
-        </div>
+        {% set reviewCount = product.acceptedReviewsByCountryCode(dediSag.countryCode)|length %}
+
+        {% if reviewCount > 0 %}
+            <div class="extra center aligned" {{ sylius_test_html_attribute('product-extra-rating') }}>
+                {% include '@SyliusShop/Product/_starRating.html.twig' %}
+                {{ 'dedi_sylius_sag_plugin.ui.x_reviews'|trans({
+                    '%count%': reviewCount
+                }) }}
+            </div>
+        {% endif %}
     {% endif %}
 </div>
