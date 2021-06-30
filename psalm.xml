@@ -37,5 +37,17 @@
                 <file name="src/DependencyInjection/DediSyliusSAGExtension.php" />
             </errorLevel>
         </MixedArgument>
+
+        <MissingClosureReturnType>
+            <errorLevel type="suppress">
+                <file name="src/Repository/Config/ApiKeyConfigRepository.php" />
+            </errorLevel>
+        </MissingClosureReturnType>
+
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <file name="src/Validator/ApiKeyConfigIsUniqueForLocalesAndChannelsValidator.php" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
     </issueHandlers>
 </psalm>

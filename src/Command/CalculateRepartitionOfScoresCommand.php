@@ -52,6 +52,7 @@ final class CalculateRepartitionOfScoresCommand extends Command
         $products = $this->productRepository->findAll();
         /** @var string $countryCode */
         $countryCode = $input->getArgument('country-code');
+        /** @var int $batchSize */
         $batchSize = $input->getOption('batch-size');
         $i = 0;
 
