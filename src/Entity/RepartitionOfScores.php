@@ -40,6 +40,9 @@ class RepartitionOfScores implements RepartitionOfScoresInterface
      */
     protected $countryCode;
 
+    /**
+     * @return mixed|null
+     */
     public function getId()
     {
         return $this->id;

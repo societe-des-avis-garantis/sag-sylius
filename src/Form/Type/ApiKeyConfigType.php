@@ -44,14 +44,10 @@ final class ApiKeyConfigType extends AbstractType
                     new NotNull([
                         'groups' => ['default', 'sylius'],
                     ]),
-                    new Regex(
-                        ApiKeyInterface::VALUE_REGEX,
-                        null,
-                        null,
-                        null,
-                        null,
-                        ['default', 'sylius']
-                    ),
+                    new Regex([
+                        'pattern' => ApiKeyInterface::VALUE_REGEX,
+                        'groups' => ['default', 'sylius'],
+                    ]),
                 ],
                 'validation_groups' => ['default', 'sylius'],
             ])
@@ -96,7 +92,7 @@ final class ApiKeyConfigType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
             ->setDefault('constraints', [

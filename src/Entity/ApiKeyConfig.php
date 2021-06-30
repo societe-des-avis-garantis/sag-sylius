@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Entity;
 
+use Dedi\SyliusSAGPlugin\Entity\Channel\ChannelInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 
 class ApiKeyConfig implements ApiKeyConfigInterface

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Entity;
 
+use Dedi\SyliusSAGPlugin\Entity\Channel\ChannelInterface;
 use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
 use Dedi\SyliusSAGPlugin\Model\CertificateOfTruthAwareInterface;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
@@ -60,6 +60,9 @@ interface ApiKeyConfigInterface extends ResourceInterface, ApiKeyInterface, Cert
 
     public function hasLocale(LocaleInterface $locale): bool;
 
+    /**
+     * @return Collection<array-key, ChannelInterface>
+     */
     public function getChannels(): Collection;
 
     public function addChannel(ChannelInterface $channel): self;

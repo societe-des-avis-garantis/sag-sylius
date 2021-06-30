@@ -15,8 +15,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class CalculateRepartitionOfScoresCommand extends Command
 {
-    protected static $defaultName = 'dedi-sag:calculate-repartition-of-scores';
-
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
@@ -41,17 +39,18 @@ final class CalculateRepartitionOfScoresCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName(self::$defaultName)
+            ->setName('dedi-sag:calculate-repartition-of-scores')
             ->setDescription('Calculates the repartition of scores.')
             ->setHelp('This command re-calculates all the repartition of scores for each products')
             ->addArgument('country-code', InputArgument::REQUIRED, 'Country code, ex: fr')
-            ->addOption('batch-size', 'bs', InputArgument::OPTIONAL, 'Defines how many products are updated at once.', 10)
+            ->addOption('batch-size', 'bs', InputArgument::OPTIONAL, 'Defines how many products are updated at once.', '10')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $products = $this->productRepository->findAll();
+        /** @var string $countryCode */
         $countryCode = $input->getArgument('country-code');
         $batchSize = $input->getOption('batch-size');
         $i = 0;

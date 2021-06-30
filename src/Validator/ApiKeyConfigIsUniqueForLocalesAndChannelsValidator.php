@@ -22,7 +22,7 @@ class ApiKeyConfigIsUniqueForLocalesAndChannelsValidator extends ConstraintValid
         $this->apiKeyConfigRepository = $apiKeyConfigRepository;
     }
 
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof ApiKeyConfigIsUniqueForLocalesAndChannels) {
             throw new UnexpectedTypeException($constraint, ApiKeyConfigIsUniqueForLocalesAndChannels::class);
@@ -39,7 +39,7 @@ class ApiKeyConfigIsUniqueForLocalesAndChannelsValidator extends ConstraintValid
         $count = $this->apiKeyConfigRepository->countFindWithSimilarConfiguration(
             $value->getId(),
             $value->getLocales()->toArray(),
-            $value->getChannels()->toArray(),
+            $value->getChannels()->toArray()
         );
 
         if ($count === 0) {
