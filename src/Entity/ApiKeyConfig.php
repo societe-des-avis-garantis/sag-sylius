@@ -15,25 +15,11 @@ class ApiKeyConfig implements ApiKeyConfigInterface
     protected $id;
 
     /**
-     * @var int
+     * @var string|null
      *
      * @psalm-suppress PropertyNotSetInConstructor
      */
-    protected $idSite;
-
-    /**
-     * @var string
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
-     */
-    protected $countryCode;
-
-    /**
-     * @var string
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
-     */
-    protected $key;
+    protected $apiKey;
 
     /** @var ?string */
     protected $certificateOfTruthUrl;
@@ -75,49 +61,45 @@ class ApiKeyConfig implements ApiKeyConfigInterface
         return $this->id;
     }
 
-    public function getIdSite(): int
+    public function getApiKey(): string
     {
-        return $this->idSite;
+        return $this->apiKey ?? '';
     }
 
-    public function setIdSite(int $idSite): ApiKeyConfigInterface
+    public function setApiKey(?string $apiKey): ApiKeyConfigInterface
     {
-        $this->idSite = $idSite;
+        $this->apiKey = $apiKey;
 
         return $this;
+    }
+
+    private function getApiKeyArray(): array
+    {
+        preg_match(self::VALUE_REGEX, $this->getApiKey(), $matches);
+        if (count($matches) < 4) {
+            throw new \LogicException(sprintf(
+                'Api Key "%s" with id "%s" does not have a valid format.',
+                $this->getApiKey(),
+                $this->id,
+            ));
+        }
+
+        return $matches;
+    }
+
+    public function getIdSite(): int
+    {
+        return (int) $this->getApiKeyArray()[1];
     }
 
     public function getCountryCode(): string
     {
-        return $this->countryCode;
-    }
-
-    public function setCountryCode(string $countryCode): ApiKeyConfigInterface
-    {
-        $this->countryCode = $countryCode;
-
-        return $this;
+        return (string) $this->getApiKeyArray()[2];
     }
 
     public function getKey(): string
     {
-        return $this->key;
-    }
-
-    public function setKey(string $key): ApiKeyConfigInterface
-    {
-        $this->key = $key;
-
-        return $this;
-    }
-
-    public function getApiKey(): string
-    {
-        return implode('/', [
-            $this->idSite,
-            $this->countryCode,
-            $this->key,
-        ]);
+        return (string) $this->getApiKeyArray()[3];
     }
 
     public function getCertificateOfTruthUrl(): ?string

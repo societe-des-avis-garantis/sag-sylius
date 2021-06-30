@@ -11,9 +11,7 @@
             <generator />
         </id>
 
-        <field name="idSite" column="id_site" type="integer" nullable="false"/>
-        <field name="countryCode" column="country_code" type="string" nullable="false"/>
-        <field name="key" column="api_key" type="string" nullable="false"/>
+        <field name="apiKey" column="api_key" type="string" nullable="false"/>
         <field name="certificateOfTruthUrl" column="certificate_of_truth_url" type="string" nullable="true"/>
         <field name="orderStatesToExport" column="order_states_to_export" type="simple_array" nullable="true"/>
         <field name="orderPaymentStatesToExport" column="order_payment_states_to_export" type="simple_array" nullable="true"/>

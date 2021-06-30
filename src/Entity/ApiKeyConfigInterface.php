@@ -13,11 +13,9 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface ApiKeyConfigInterface extends ResourceInterface, ApiKeyInterface, CertificateOfTruthAwareInterface
 {
-    public function setIdSite(int $idSite): self;
+    public function getApiKey(): string;
 
-    public function setCountryCode(string $countryCode): self;
-
-    public function setKey(string $key): self;
+    public function setApiKey(?string $apiKey): self;
 
     public function setCertificateOfTruthUrl(?string $certificateOfTruthUrl): self;
 
