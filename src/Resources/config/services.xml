@@ -17,4 +17,11 @@
         <import resource="services/updater.xml"/>
         <import resource="services/validators.xml"/>
     </imports>
+
+    <services>
+        <service id="dedi.sylius_sag_plugin.http_client"
+                 class="Symfony\Contracts\HttpClient\HttpClientInterface">
+            <factory class="Symfony\Component\HttpClient\HttpClient" method="create" />
+        </service>
+    </services>
 </container>

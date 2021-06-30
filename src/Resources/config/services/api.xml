@@ -4,7 +4,7 @@
     <services>
         <service id="dedi.sylius_sag_plugin.api.token_validator"
                  class="Dedi\SyliusSAGPlugin\Api\TokenValidator">
-            <argument key="$client" type="service" id="http_client"/>
+            <argument key="$client" type="service" id="dedi.sylius_sag_plugin.http_client"/>
             <argument key="$logger" type="service" id="monolog.logger.sag"/>
             <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>
             <argument key="$apiContext" type="service" id="dedi.sylius_sag_plugin.context.api_context"/>
@@ -12,7 +12,7 @@
 
         <service id="dedi.sylius_sag_plugin.api.review_fetcher"
                  class="Dedi\SyliusSAGPlugin\Api\ReviewFetcher">
-            <argument key="$client" type="service" id="http_client"/>
+            <argument key="$client" type="service" id="dedi.sylius_sag_plugin.http_client"/>
             <argument key="$logger" type="service" id="monolog.logger.sag"/>
             <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>
             <argument key="$apiContext" type="service" id="dedi.sylius_sag_plugin.context.api_context"/>
@@ -23,7 +23,7 @@
 
         <service id="dedi.sylius_sag_plugin.api.order_sender"
                  class="Dedi\SyliusSAGPlugin\Api\OrderSender">
-            <argument key="$client" type="service" id="http_client"/>
+            <argument key="$client" type="service" id="dedi.sylius_sag_plugin.http_client"/>
             <argument key="$logger" type="service" id="monolog.logger.sag"/>
             <argument key="$orderExportDataFactory" type="service" id="dedi.sylius_sag_plugin.factory.order_export_data_factory"/>
             <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>
@@ -32,7 +32,7 @@
 
         <service id="dedi.sylius_sag_plugin.api.certificate_of_truth_url_fetcher"
                  class="Dedi\SyliusSAGPlugin\Api\CertificateOfTruthUrlFetcher">
-            <argument key="$client" type="service" id="http_client"/>
+            <argument key="$client" type="service" id="dedi.sylius_sag_plugin.http_client"/>
             <argument key="$logger" type="service" id="monolog.logger.sag"/>
             <argument key="$apiContext" type="service" id="dedi.sylius_sag_plugin.context.api_context"/>
         </service>
