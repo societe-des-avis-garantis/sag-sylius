@@ -45,11 +45,6 @@ final class ApiKeyContext implements ApiKeyContextInterface
 
     public function findApiKeyByCountryCode(string $code): ?ApiKeyConfigInterface
     {
-        /** @var ?ApiKeyConfigInterface $apiKey */
-        $apiKey =  $this->apiKeyConfigRepository->findOneBy([
-            'countryCode' => $code,
-        ]);
-
-        return $apiKey;
+        return $this->apiKeyConfigRepository->findOneByCountryCode($code);
     }
 }

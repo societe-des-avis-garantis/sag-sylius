@@ -26,4 +26,6 @@ interface ApiKeyConfigRepositoryInterface extends RepositoryInterface
         array $locales,
         array $channels
     ): int;
+
+    public function findOneByCountryCode(string $code): ?ApiKeyConfigInterface;
 }

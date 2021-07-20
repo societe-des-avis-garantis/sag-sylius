@@ -57,4 +57,18 @@ class ApiKeyConfigRepository extends EntityRepository implements ApiKeyConfigRep
             ->getSingleScalarResult()
         ;
     }
+
+    public function findOneByCountryCode(string $code): ?ApiKeyConfigInterface
+    {
+        /** @var ?ApiKeyConfigInterface $apiKeyConfig */
+        $apiKeyConfig = $this->createQueryBuilder('o')
+            ->andWhere('o.apiKey LIKE :apiKey')
+            ->setParameter('apiKey', '%/'.$code.'/%')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+
+        return $apiKeyConfig;
+    }
 }
