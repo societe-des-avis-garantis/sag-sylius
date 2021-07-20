@@ -35,8 +35,21 @@
         <MixedArgument>
             <errorLevel type="suppress">
                 <file name="src/DependencyInjection/DediSyliusSAGExtension.php" />
+                <file name="src/Fixture/Factory/ProductReviewExampleFactory.php" />
             </errorLevel>
         </MixedArgument>
+
+        <MixedReturnStatement>
+            <errorLevel type="suppress">
+                <file name="src/Fixture/Factory/ProductReviewExampleFactory.php" />
+            </errorLevel>
+        </MixedReturnStatement>
+
+        <MixedInferredReturnType>
+            <errorLevel type="suppress">
+                <file name="src/Fixture/Factory/ProductReviewExampleFactory.php" />
+            </errorLevel>
+        </MixedInferredReturnType>
 
         <MissingClosureReturnType>
             <errorLevel type="suppress">
@@ -49,5 +62,11 @@
                 <file name="src/Validator/ApiKeyConfigIsUniqueForLocalesAndChannelsValidator.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>
+
+        <DeprecatedMethod>
+            <errorLevel type="info">
+                <referencedMethod name="Faker\Generator::__get"/>
+            </errorLevel>
+        </DeprecatedMethod>
     </issueHandlers>
 </psalm>
