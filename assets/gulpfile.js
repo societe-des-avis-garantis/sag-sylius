@@ -31,7 +31,7 @@ gulp.task('clean', () => {
   });
 });
 
-gulp.task('default', gulp.series(['clean', 'styles', 'minify-css']));
+gulp.task('default', gulp.series(['clean', 'styles']));
 
 gulp.task('watch', () => {
   gulp.watch('sass/**/*.scss', (done) => {

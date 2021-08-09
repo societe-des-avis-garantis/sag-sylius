@@ -1,46 +1,31 @@
 {% set reviewCount = product.countReviewsForCountryCode(dediSag.countryCode) %}
 
 {% if reviewCount > 0 %}
-    <div class="ui centered grid">
-        <div class="sixteen wide mobile ten wide computer column">
-            <div class="ui placeholder segment">
-                <div class="ui stackable grid bottom aligned">
-                    <div class="three column row">
-                        <div class="column center aligned">
-                            <div class="ui list">
-                                <div class="item">
-                                    <img class="ui image" src="{{ asset('bundles/dedisyliussagplugin/img/logo_badge_'~dediSag.countryCode~'.png') }}" alt="{{ 'dedi_sylius_sag_plugin.ui.sag_logo'|trans }}"/>
-                                </div>
+    <div class="inner bgGrey1">
+        <div class="logoCont">
+            <img class="logoAg" width="150" height="35" src="{{ asset('bundles/dedisyliussagplugin/img/steavisgarantis_logo_'~dediSag.countryCode~'.png') }}" alt="{{ 'dedi_sylius_sag_plugin.ui.sag_logo'|trans }}"/>
 
-                                {% if dediSag.certificateOfTruthUrl is not null %}
-                                    <span class="item">
-                                        <a href="{{ dediSag.certificateOfTruthUrl }}" class="ui button primary" target="_blank">
-                                            {{ 'dedi_sylius_sag_plugin.ui.see_certificate'|trans }}
-                                        </a>
-                                    </span>
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        <div class="column center aligned">
-                            {{ include('@DediSyliusSAGPlugin/Shop/ProductReview/_barChart.svg.twig', {
-                                title: 'dedi_sylius_sag_plugin.ui.bar_chart_title'|trans({
-                                    '%product_name%': product.name,
-                                }),
-                                ratings: product.reviewRatingsRepartitionByCountryCode(dediSag.countryCode),
-                            }) }}
-                        </div>
-
-                        <div class="column center aligned">
-                            <span class="ui huge blue header">
-                                {{ product.averageRatingByCountryCode(dediSag.countryCode, 10)|round(1) }} / 10
-
-                                <div class="sub header">
-                                    {{ 'dedi_sylius_sag_plugin.ui.based_on_x_reviews'|trans({}, null, null, reviewCount) }}
-                                </div>
-                            </span>
-                        </div>
-                    </div>
+            {% if dediSag.certificateOfTruthUrl is not null %}
+                <a href="{{ dediSag.certificateOfTruthUrl }}" class="agBt certificateBtn" target="_blank">
+                    {{ 'dedi_sylius_sag_plugin.ui.see_certificate'|trans }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="statCont">
+            <div class="steavisgarantisStats">
+                {{ include('@DediSyliusSAGPlugin/Shop/ProductReview/_barChart.svg.twig', {
+                    title: 'dedi_sylius_sag_plugin.ui.bar_chart_title'|trans({
+                        '%product_name%': product.name,
+                    }),
+                    ratings: product.reviewRatingsRepartitionByCountryCode(dediSag.countryCode),
+                }) }}
+            </div>
+        </div>
+        <div class="reviewCont">
+            <div class="reviewGlobal">
+                <div class="largeNote">
+                    <big>{{ product.averageRatingByCountryCode(dediSag.countryCode, 10)|round(1) }}</big>/10
+                    <p><br>{{ 'dedi_sylius_sag_plugin.ui.based_on_x_reviews'|trans({}, null, null, reviewCount) }}</p>
                 </div>
             </div>
         </div>

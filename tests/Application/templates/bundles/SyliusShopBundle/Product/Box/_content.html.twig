@@ -22,10 +22,12 @@
 
         {% if reviewCount > 0 %}
             <div class="extra center aligned" {{ sylius_test_html_attribute('product-extra-rating') }}>
-                {% include '@SyliusShop/Product/_starRating.html.twig' %}
-                {{ 'dedi_sylius_sag_plugin.ui.x_reviews'|trans({
-                    '%count%': reviewCount
-                }) }}
+                <div class="steavisgarantisStar">
+                    {% include '@SyliusShop/Product/_starRating.html.twig' %}
+                    <span>{{ 'dedi_sylius_sag_plugin.ui.x_reviews'|trans({
+                        '%count%': reviewCount
+                    }) }}</span>
+                </div>
             </div>
         {% endif %}
     {% endif %}

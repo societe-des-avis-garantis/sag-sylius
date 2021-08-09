@@ -1,0 +1,248 @@
+/* Global */
+.reviewGlobal {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  .steavisgarantisStar {
+    margin-right: 10px;
+  }
+}
+
+/* Etoile */
+.steavisgarantisStar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & > span {
+    margin-left: 10px;
+  }
+  .ui.star.rating {
+    .icon {
+      width: 1.1em;
+      font-size: 20px;
+      &.active {
+        color: #F5D700 !important;
+        text-shadow: none !important;
+      }
+    }
+  }
+}
+
+/*NOTES*/
+.largeNote, .largeNote p{
+  font-family: 'Oswald', Arial ;
+  font-weight:700;
+  font-size:12px;
+  line-height:12px;
+  letter-spacing:0;
+  color:#175298;
+}
+.largeNote big { font-size:36px; letter-spacing:-2px;}
+
+/*list des avis*/
+.reviewList {
+  padding:4px 0;
+  margin:8px auto 12px auto;
+  line-height:16px;
+  font-family: 'Open Sans', sans-serif;
+  text-align:left;
+  li {
+    list-style:none; padding:10px 0; position:relative;
+    &:nth-child(odd) {
+      background: #f9f9f9;
+    }
+    &:nth-child(even) {
+      background: #f3f3f3;
+    }
+  }
+
+  .author {
+    letter-spacing:0;
+    font-size:15px;
+    line-height:18px;
+    color:#175298;
+    font-weight:600;
+    img {
+      float:left;
+      margin:4px 8px 8px 0;
+    }
+    .time{
+      display:inline-block;
+      font-size:9.5px;
+      font-weight:400;
+    }
+  }
+
+  .reviewTxt p, .reponse p {
+    display:block;
+    margin:4px 0 0 0;
+    font-size:12px;
+    line-height:14px;
+    letter-spacing:0;
+  }
+  .reviewTxt meta {
+    display:none;
+  }
+
+  .reponse {
+    display: block;
+    padding: 8px 12px;
+    background: #fff;
+    margin-top: 10px;
+    span {
+      font-size:11px;
+      line-height:11px;
+      color:#175298;
+      letter-spacing:0;
+        img {
+        margin-right:6px;
+        float:left;
+        width:12px;
+      }
+    }
+    p {
+      font-style:italic;
+      font-size:12px;
+    }
+  }
+}
+
+/*steavisgarantisStats*/
+.steavisgarantisStats {
+  font-size: 11px;
+}
+
+/*boutons*/
+.agBt {
+  display: inline-block;
+  background:#175298;
+  border:1px solid #175298;
+  color:#ffffff;
+  font-size:11px;
+  line-height:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-align:center;
+  padding:4px 10px;
+  width:auto;
+  text-decoration: none;
+  &:hover {
+    background:none;
+    color:#175298;
+    text-decoration:none;
+  }
+}
+
+/*WIDGET MAIN*/
+#agWidgetMain {
+  display:block;
+  width:100%;
+  max-width:100%;
+  line-height:0;
+  text-align:center;
+  overflow:hidden;
+  padding-bottom:12px;
+  margin:0;
+
+  .inner {
+    display: flex;
+    align-items: center;
+    text-align:left;
+    overflow:hidden;
+    padding:25px 14px 20px 14px;
+  }
+
+  .logoCont {
+    width:41%;
+    .logoAg {
+      display:block;
+      max-width:151px;
+      margin:10px
+    }
+    .agBt {
+      margin:6px 0 0 12px
+    }
+  }
+
+  .statCont  {
+    width:28%;
+    text-align:center;
+    min-width:140px;
+  }
+
+  .reviewCont {
+    width: 120px;
+    margin-left: auto;
+    .reviewGlobal {
+      padding: 0;
+      padding-top:26px;
+      text-align:center;
+    }
+  }
+  .largeNote{
+    width: 100%;
+    font-size:24px;
+    line-height:28px;
+    letter-spacing:-1px;
+    .big {
+      font-size:50px;
+      letter-spacing:-3px;
+    }
+  }
+
+  .reviewList {
+    padding:0;
+    margin:0 auto 8px auto;
+    li {
+      border-top:none;
+      padding:16px 20px;
+      margin:0;
+    }
+
+    .steavisgarantisStar {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+    }
+  }
+  .reviewTxt p {
+    font-weight:400;
+    margin:6px 0;
+    letter-spacing:0;
+    padding:0
+  }
+}
+
+@media (max-width: 600px) {
+  #agWidgetMain {
+    .statCont {
+      display:none;
+    }
+    .logoCont {
+      width:60%;
+    }
+    .reviewCont {
+      width:40%;
+    }
+  }
+}
+@media (max-width: 400px) {
+  #agWidgetMain {
+    .inner {
+      padding: 25px 0;
+    }
+
+    .logoCont {
+      .logoAg, .agBt {
+        margin-left: 0;
+      }
+    }
+
+    .reviewList {
+      .steavisgarantisStar {
+        display:block;
+        position:static;
+      }
+    }
+  }
+}
