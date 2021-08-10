@@ -10,6 +10,13 @@ use Sylius\Component\Core\Repository\ProductReviewRepositoryInterface as BasePro
 
 interface ProductReviewRepositoryInterface extends BaseProductReviewRepositoryInterface
 {
+    /**
+     * @param string $slug
+     * @param string $locale
+     * @param string|null $countryCode
+     *
+     * @return Pagerfanta<ProductReviewInterface>
+     */
     public function createQueryBuilderForAcceptedByProductSlugAndCountryCode(
         string $slug,
         string $locale,
