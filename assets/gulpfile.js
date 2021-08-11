@@ -8,7 +8,7 @@ const rename = require('gulp-rename');
 const sass = gulpSass(nodeSass);
 
 gulp.task('styles', () => {
-  return gulp.src('sass/**/*.scss')
+  return gulp.src('sass/**/main.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(gulp.dest('../src/Resources/public/css/'));
 });
@@ -24,17 +24,16 @@ gulp.task('minify-css', () => {
 
 gulp.task('clean', () => {
   return del([
-    '../src/Resources/public/css/main.css',
-    '../src/Resources/public/css/main.min.css',
+    '../src/Resources/public/css/*',
   ], {
     force: true,
   });
 });
 
-gulp.task('default', gulp.series(['clean', 'styles']));
+gulp.task('default', gulp.series(['clean', 'styles', 'minify-css']));
 
 gulp.task('watch', () => {
   gulp.watch('sass/**/*.scss', (done) => {
-    gulp.series(['clean', 'styles'])(done);
+    gulp.series(['clean', 'styles', 'minify-css'])(done);
   });
 });
