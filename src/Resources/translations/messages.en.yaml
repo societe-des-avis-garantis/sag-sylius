@@ -8,7 +8,7 @@ dedi_sylius_sag_plugin:
         show_reviews: Show reviews
         sag_logo: Guaranteed Reviews logo
         product_identificiation: Product identification
-        see_certificate: See certificate
+        see_certificate: Show attestation
         bar_chart_title: Distribution of scores for %product_name%
         based_on_x_reviews: 'Based on %count% review.|Based on %count% reviews.'
         x_reviews: '%count% review|%count% reviews'
