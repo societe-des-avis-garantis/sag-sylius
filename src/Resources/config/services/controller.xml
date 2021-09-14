@@ -17,5 +17,17 @@
             <argument key="$productReviewRepository" type="service" id="sylius.repository.product_review"/>
             <argument key="$repartitionOfScoresUpdater" type="service" id="dedi.sylius_sag_plugin.updater.repartition_of_scores_updater" />
         </service>
+
+        <service id="dedi.sylius_sag_plugin.controller.api.fetch_paginated_review_list_for_product"
+                 class="Dedi\SyliusSAGPlugin\Controller\Api\FetchPaginatedReviewListForProduct"
+                 public="true">
+            <argument key="$productReviewRepository" type="service" id="sylius.repository.product_review"/>
+            <argument key="$dediSAGContext" type="service" id="dedi.sylius_sag_plugin.context.dedi_sag_context"/>
+            <argument key="$localeContext" type="service" id="sylius.context.locale"/>
+
+            <call method="setContainer">
+                <argument key="$container" type="service" id="service_container"/>
+            </call>
+        </service>
     </services>
 </container>

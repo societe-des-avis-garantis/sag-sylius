@@ -37,3 +37,7 @@ sylius_shop_product_review_index:
                     - "expr:service('dedi.sylius_sag_plugin.context.dedi_sag_context').getCountryCode()"
             paginate: 10
 
+dedi_sylius_sag_plugin_shop_product_review_list:
+    path: /partials/{productSlug}/{maxPerPage}/{currentPage}
+    methods: [GET]
+    controller: dedi.sylius_sag_plugin.controller.api.fetch_paginated_review_list_for_product

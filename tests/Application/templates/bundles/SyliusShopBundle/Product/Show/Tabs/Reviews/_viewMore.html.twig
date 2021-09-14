@@ -1,0 +1,14 @@
+{% set maxPerPage = 10 %}
+{% set reviewCount = product.countReviewsForCountryCode(dediSag.countryCode) %}
+
+{% if reviewCount > maxPerPage %}
+    <button data-sag-load-more
+            data-sag-review-list-container-selector="#review-list-container"
+            data-sag-url="{{ path('dedi_sylius_sag_plugin_shop_product_review_list', { 'productSlug': product.slug, maxPerPage: maxPerPage, currentPage: 'CURRENT_PAGE' }) }}"
+            data-sag-page="1"
+            data-sag-review-count="{{ reviewCount }}"
+            data-sag-max-per-page="{{ maxPerPage }}"
+            class="ui labeled icon button">
+        <i class="icon list"></i> {{ 'sylius.ui.view_more'|trans }}
+    </button>
+{% endif %}
