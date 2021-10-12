@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="dedi.sylius_sag_plugin.controller.api.send_orders_to_api_action"
+                 class="Dedi\SyliusSAGPlugin\Controller\Api\SendOrdersToApiAction"
+                 public="true">
+            <argument key="$isRequestTokenValidSpecification" type="service" id="dedi.sylius_sag_plugin.specification.is_request_token_valid_specification"/>
+            <argument key="$ordersToExportFetcher" type="service" id="dedi.sylius_sag_plugin.fetcher.orders_to_export_fetcher"/>
+            <argument key="$orderSender" type="service" id="dedi.sylius_sag_plugin.api.order_sender"/>
+        </service>
+    </services>
+</container>

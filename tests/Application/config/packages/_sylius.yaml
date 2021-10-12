@@ -31,3 +31,9 @@ sylius_review:
             reviewer:
                 classes:
                     model: Sylius\Component\Review\Model\Reviewer
+
+sylius_order:
+    resources:
+        order:
+            classes:
+                repository: Tests\Dedi\SyliusSAGPlugin\Application\src\Repository\Order\OrderRepository

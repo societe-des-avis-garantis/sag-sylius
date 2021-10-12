@@ -6,10 +6,41 @@ namespace Dedi\SyliusSAGPlugin\Entity\Product;
 
 use Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Review\Model\ReviewInterface;
 
 trait ProductTrait
 {
+    /** @ORM\Column(type="string", name="sag_ean13", nullable=true) */
+    protected $SAGEan13;
+
+    /** @ORM\Column(type="string", name="sag_upc", nullable=true) */
+    protected $SAGUpc;
+
+    public function getSAGEan13(): ?string
+    {
+        return $this->SAGEan13;
+    }
+
+    public function setSAGEan13(?string $SAGEan13): ProductInterface
+    {
+        $this->SAGEan13 = $SAGEan13;
+
+        return $this;
+    }
+
+    public function getSAGUpc(): ?string
+    {
+        return $this->SAGUpc;
+    }
+
+    public function setSAGUpc(?string $SAGUpc): ProductInterface
+    {
+        $this->SAGUpc = $SAGUpc;
+
+        return $this;
+    }
+
     public function getAcceptedReviewsByCountryCode(
         string $countryCode
     ): Collection {

@@ -2,3 +2,12 @@ imports:
   - { resource: sylius_ui.yml }
   - { resource: sylius_grid.yml }
   - { resource: twig.yml }
+
+monolog:
+  channels: ['sag']
+  handlers:
+    paypal:
+      level: debug
+      type: stream
+      path: '%kernel.logs_dir%/sag.log'
+      channels: [sag]

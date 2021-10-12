@@ -7,3 +7,6 @@ dedi_sag_plugin:
         country_code: Code pays
         show_reviews: Voir les avis
         sag_logo: Logo Société des Avis Garantis
+        product_identificiation: Identification produit
+        ean13: ean13
+        upc: upc

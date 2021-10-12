@@ -35,4 +35,17 @@ final class ApiKeyContext implements ApiKeyContextInterface
     {
         return $this->apiKey;
     }
+
+    public function findApiKeyByCountryCode(string $code): ?ApiKey
+    {
+        if (null === $this->apiKey) {
+            return null;
+        }
+
+        if ($this->apiKey->getCountryCode() !== $code) {
+            return null;
+        }
+
+        return $this->apiKey;
+    }
 }

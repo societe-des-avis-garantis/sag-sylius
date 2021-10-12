@@ -7,3 +7,7 @@ dedi_sylius_sag_shop:
 dedi_sylius_sag_admin:
     resource: "@DediSyliusSAGPlugin/Resources/config/admin_routing.yml"
     prefix: /admin
+
+dedi_sylius_sag_api:
+    resource: "@DediSyliusSAGPlugin/Resources/config/api_routing.yml"
+    prefix: /sag-api
