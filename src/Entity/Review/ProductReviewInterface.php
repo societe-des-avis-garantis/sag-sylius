@@ -8,6 +8,8 @@ use Sylius\Component\Review\Model\ReviewInterface;
 
 interface ProductReviewInterface extends ReviewInterface
 {
+    public function setId(?int $id): void;
+
     public function getSAGId(): ?string;
 
     public function setSAGId(?string $SAGId): self;

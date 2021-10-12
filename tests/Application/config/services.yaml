@@ -2,3 +2,12 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
+
+services:
+    app.factory.product_review:
+        class: Tests\Dedi\SyliusSAGPlugin\Application\src\Factory\Review\ReviewFactory
+        decorates: sylius.factory.product_review
+        arguments:
+            $baseFactory: '@app.factory.product_review.inner'
+            $reviewerFactory: '@sylius.factory.product_reviewer'
+        public: false

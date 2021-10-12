@@ -48,7 +48,7 @@ dedi_sylius_sag_api:
 
 ## Configure your Product
 
-Your Product entity needs to implement the \Dedi\SyliusSAGPlugin\Entity\Product\ProductInterface interface and use the \Dedi\SyliusSAGPlugin\Entity\Product\ProductTrait trait.
+Your `Product` entity needs to implement the `Dedi\SyliusSAGPlugin\Entity\Product\ProductInterface` interface and use the `Dedi\SyliusSAGPlugin\Entity\Product\ProductTrait` trait.
 
 ```php
 use Dedi\SyliusSAGPlugin\Entity\Product\ProductInterface as DediSAGProductInterface;
@@ -80,7 +80,7 @@ sylius_product:
 
 ## Configure the ProductReview
 
-Your ProductReview entity needs to implement the \Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface interface and use the \Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewTrait trait.
+Your `ProductReview` entity needs to implement the `Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface` interface and use the `Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewTrait` trait.
 
 ```php
 use Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface as DediSAGProductReviewInterface;
@@ -95,10 +95,15 @@ use Sylius\Component\Core\Model\ProductReview as BaseProductReview;
 class ProductReview extends BaseProductReview implements DediSAGProductReviewInterface
 {
     use DediSAGProductReviewTrait;
+    
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
 }
 ```
 
-Your ProductReviewRepository repository needs to implement the \Dedi\SyliusSAGPlugin\Repository\Review\ProductReviewRepositoryInterface interface and use the \Dedi\SyliusSAGPlugin\Repository\Review\ProductReviewRepositoryTrait trait.
+Your `ProductReviewRepository` repository needs to implement the `Dedi\SyliusSAGPlugin\Repository\Review\ProductReviewRepositoryInterface` interface and use the `Dedi\SyliusSAGPlugin\Repository\Review\ProductReviewRepositoryTrait` trait.
 
 ```php
 use Dedi\SyliusSAGPlugin\Repository\Review\ProductReviewRepositoryInterface as DediSAGProductReviewRepositoryInterface;
@@ -129,9 +134,70 @@ sylius_review:
                     model: Sylius\Component\Review\Model\Reviewer
 ```
 
+Your `ProductReviewFactory` should implement `Dedi\SyliusSAGPlugin\Factory\Review\ReviewFactoryInterface` and use the `Dedi\SyliusSAGPlugin\Factory\Review\ReviewFactoryTrait` trait. 
+
+```php
+use Dedi\SyliusSAGPlugin\Factory\Review\ReviewFactoryInterface as DediSAGReviewFactoryInterface;
+use Dedi\SyliusSAGPlugin\Factory\Review\ReviewFactoryTrait as DediSAGReviewFactoryTrait;
+use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Review\Factory\ReviewFactoryInterface;
+use Sylius\Component\Review\Model\ReviewableInterface;
+use Sylius\Component\Review\Model\ReviewerInterface;
+use Sylius\Component\Review\Model\ReviewInterface;
+
+final class ReviewFactory implements DediSAGReviewFactoryInterface
+{
+    use DediSAGReviewFactoryTrait {
+        __construct as initializeDediSAGArguments;
+    }
+
+    /** @var ReviewFactoryInterface */
+    private $baseFactory;
+
+    public function __construct(
+        ReviewFactoryInterface $baseFactory,
+        FactoryInterface $reviewerFactory
+    ) {
+        $this->baseFactory = $baseFactory;
+
+        $this->initializeDediSAGArguments($reviewerFactory);
+    }
+
+    public function createNew()
+    {
+        return $this->baseFactory->createNew();
+    }
+
+    public function createForSubject(ReviewableInterface $subject): ReviewInterface
+    {
+        return $this->baseFactory->createForSubject($subject);
+    }
+
+    public function createForSubjectWithReviewer(ReviewableInterface $subject, ?ReviewerInterface $reviewer): ReviewInterface
+    {
+        return $this->baseFactory->createForSubjectWithReviewer($subject, $reviewer);
+    }
+}
+```
+
+Don't forget to add the corresponding service.
+
+```yaml
+# config/services.yaml
+
+services:
+    app.factory.product_review:
+        class: App\Factory\Review\ReviewFactory
+        decorates: sylius.factory.product_review
+        arguments:
+            $baseFactory: '@app.factory.product_review.inner'
+            $reviewerFactory: '@sylius.factory.product_reviewer'
+        public: false
+```
+
 ## Configure the Order
 
-Your OrderRepository repository needs to implement the \Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryInterface interface and use the \Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryTrait trait.
+Your `OrderRepository` repository needs to implement the `Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryInterface` interface and use the `Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryTrait` trait.
 
 ```php
 use Dedi\SyliusSAGPlugin\Repository\Order\OrderRepositoryInterface as DediSAGOrderRepositoryInterface;

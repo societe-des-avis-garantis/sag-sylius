@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Repository\Review;
 
+use Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface;
 use Pagerfanta\Pagerfanta;
 use Sylius\Component\Core\Repository\ProductReviewRepositoryInterface as BaseProductReviewRepositoryInterface;
 
@@ -27,4 +28,11 @@ interface ProductReviewRepositoryInterface extends BaseProductReviewRepositoryIn
         int $count,
         ?string $countryCode
     ): array;
+
+    /**
+     * @param ProductReviewInterface[] $reviews
+     *
+     * @return void
+     */
+    public function bulkSave(array $reviews): void;
 }

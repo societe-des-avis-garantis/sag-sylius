@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait ProductReviewTrait
 {
-    /** @ORM\Column(type="string", name="sag_id", nullable=true) */
+    /** @ORM\Column(type="string", name="sag_id", nullable=true, unique=true) */
     protected $SAGId;
 
     /** @ORM\Column(type="text", name="sag_answer_comment", nullable=true) */
