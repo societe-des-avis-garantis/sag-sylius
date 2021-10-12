@@ -28,6 +28,11 @@ interface ProductInterface extends BaseProductInterface
     ): Collection;
 
     public function getAverageRatingByCountryCode(
-        string $countryCode
+        string $countryCode,
+        int $outOf = 5
     ): float;
+
+    public function getReviewRatingsRepartitionByCountryCode(
+        string $countryCode
+    ): array;
 }

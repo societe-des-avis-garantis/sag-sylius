@@ -56,6 +56,9 @@ sylius_grid:
                 SAGAnswerCreatedAt:
                     label: dedi_sylius_sag_plugin.ui.answer_created_at
                     type: datetime
+                SAGOrderedAt:
+                    label: dedi_sylius_sag_plugin.ui.ordered_at
+                    type: datetime
                 SAGCountryCode:
                     label: dedi_sylius_sag_plugin.ui.country_code
                     type: twig

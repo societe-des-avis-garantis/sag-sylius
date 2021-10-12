@@ -39,6 +39,9 @@ class ReviewDTO
     /** @var \DateTimeImmutable|null */
     public $SAGAnswerCreatedAt;
 
+    /** @var \DateTimeImmutable|null */
+    public $SAGOrderedAt;
+
     /** @var string */
     public $countryCode;
 
@@ -53,6 +56,7 @@ class ReviewDTO
         int $SAGStatus,
         ?string $SAGAnswerComment,
         ?\DateTimeImmutable $SAGAnswerCreatedAt,
+        ?\DateTimeImmutable $SAGOrderedAt,
         string $countryCode
     ) {
         $this->SAGId = $SAGId;
@@ -65,6 +69,7 @@ class ReviewDTO
         $this->status = SagStatusEnum::sagToSylius($SAGStatus);
         $this->SAGAnswerComment = $SAGAnswerComment;
         $this->SAGAnswerCreatedAt = $SAGAnswerCreatedAt;
+        $this->SAGOrderedAt = $SAGOrderedAt;
         $this->countryCode = $countryCode;
     }
 }

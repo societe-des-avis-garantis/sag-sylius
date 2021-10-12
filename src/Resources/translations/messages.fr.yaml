@@ -10,6 +10,12 @@ dedi_sylius_sag_plugin:
         product_identificiation: Identification produit
         ean13: ean13
         upc: upc
+        see_certificate: Voir le certificat
+        bar_chart_title: Répartition des notes pour %product_name%
+        based_on_x_reviews: Basé sur %count% avis
+        published_at: Publié le %date%
+        ordered_on_date: 'Date de commande: %date%'
+        ordered_at: Date de commande
         api_key_configs: SAG Clés d'api
         sag_configuration: SAG Configuration
         sag_configuration_description: Configurer vos clés d'api

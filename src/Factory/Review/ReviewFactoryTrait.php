@@ -40,6 +40,7 @@ trait ReviewFactoryTrait
         $review->setStatus($dto->status);
         $review->setSAGAnswerComment($dto->SAGAnswerComment);
         $review->setSAGAnswerCreatedAt($dto->SAGAnswerCreatedAt);
+        $review->setSAGOrderedAt($dto->SAGOrderedAt);
         $review->setSAGCountryCode($dto->countryCode);
 
         return $review;
