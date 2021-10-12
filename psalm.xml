@@ -12,4 +12,30 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <PossiblyNullReference>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/Configuration.php" />
+            </errorLevel>
+        </PossiblyNullReference>
+
+        <PossiblyUndefinedMethod>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/Configuration.php" />
+            </errorLevel>
+        </PossiblyUndefinedMethod>
+
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/Configuration.php" />
+            </errorLevel>
+        </MixedMethodCall>
+
+        <MixedArgument>
+            <errorLevel type="suppress">
+                <file name="src/DependencyInjection/DediSyliusSAGExtension.php" />
+            </errorLevel>
+        </MixedArgument>
+    </issueHandlers>
 </psalm>

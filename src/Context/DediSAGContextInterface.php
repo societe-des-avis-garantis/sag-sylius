@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\ApiKey;
-use Dedi\SyliusSAGPlugin\Model\CertificateOfTruth;
+use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
 
 interface DediSAGContextInterface
 {
-    public function getApiKey(): ?ApiKey;
+    public function getApiKey(): ?ApiKeyInterface;
 
     public function getCountryCode(): ?string;
 
-    public function getCertificateOfTruth(): ?CertificateOfTruth;
+    public function getCertificateOfTruthUrl(): ?string;
 }

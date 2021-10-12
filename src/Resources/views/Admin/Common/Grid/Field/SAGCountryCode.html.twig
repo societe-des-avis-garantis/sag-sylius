@@ -1,0 +1,7 @@
+{% set flag = data|lower %}
+
+{% if flag == 'en' %}
+    <i class="gb uk flag"></i> {{ data }}
+{% else %}
+    <i class="{{ flag }} flag"></i> {{ data }}
+{% endif %}

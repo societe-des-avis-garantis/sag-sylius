@@ -1,4 +1,4 @@
-dedi_sag_plugin:
+dedi_sylius_sag_plugin:
     ui:
         footer_reassurance_link_sentance: Marchand approuvé par la Société des Avis Garantis, cliquez ici pour vérifier l'attestation.
         sag_id: Id SAG
@@ -10,3 +10,18 @@ dedi_sag_plugin:
         product_identificiation: Identification produit
         ean13: ean13
         upc: upc
+        api_key_configs: SAG Clés d'api
+        sag_configuration: SAG Configuration
+        sag_configuration_description: Configurer vos clés d'api
+        api_key: Clé api
+        certificate_of_truth_url: Lien vers le certificat
+        certificate_of_truth: Certificat
+        edit_api_key_config: Modifier une configuration de clé d'api
+        new_api_key_config: Créer une configuration de clé d'api
+
+    form:
+        id_site: Id site
+        country_code: Code pays
+        key: Clé
+        locales: Activé pour les locales suivante
+        channels: Activé pour les cannaux suivante

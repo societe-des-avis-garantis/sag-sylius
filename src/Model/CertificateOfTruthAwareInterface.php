@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Dedi\SyliusSAGPlugin\Context;
+namespace Dedi\SyliusSAGPlugin\Model;
 
-interface CertificateOfTruthContextInterface
+interface CertificateOfTruthAwareInterface
 {
     public function getCertificateOfTruthUrl(): ?string;
 }

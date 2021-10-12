@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\CertificateOfTruth;
+use Dedi\SyliusSAGPlugin\Model\CertificateOfTruthAwareInterface;
 
 final class CertificateOfTruthContext implements CertificateOfTruthContextInterface
 {
-    /** @var CertificateOfTruth|null */
-    private $certificateOfTruth;
+    /** @var ApiKeyContextInterface */
+    private $apiKeyContext;
 
     public function __construct(
-        string $certificateOfTruthLink
+        ApiKeyContextInterface $apiKeyContext
     ) {
-        if ('' === $certificateOfTruthLink) {
-            $this->certificateOfTruth = null;
-
-            return;
-        }
-
-        $this->certificateOfTruth = new CertificateOfTruth($certificateOfTruthLink);
+        $this->apiKeyContext = $apiKeyContext;
     }
 
-    public function getCertificateOfTruth(): ?CertificateOfTruth
+    public function getCertificateOfTruthUrl(): ?string
     {
-        return $this->certificateOfTruth;
+        /** @var CertificateOfTruthAwareInterface|null $apiKeyConfig */
+        $apiKeyConfig = $this->apiKeyContext->getApiKey();
+        if (null === $apiKeyConfig) {
+            return null;
+        }
+
+        return $apiKeyConfig->getCertificateOfTruthUrl();
     }
 }

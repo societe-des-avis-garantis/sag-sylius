@@ -105,7 +105,7 @@ class ReviewFetcher implements ReviewFetcherInterface
             $data = $response->toArray();
         } catch (\Exception $e) {
             $this->logger->error(sprintf(
-                'Error while reviews response to array: "%s"',
+                'Error while transforming reviews response to array: "%s"',
                 $e->getMessage(),
             ), [
                 'exception' => $e,

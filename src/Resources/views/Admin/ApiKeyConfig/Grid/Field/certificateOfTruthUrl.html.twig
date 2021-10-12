@@ -1,0 +1,11 @@
+{% if data %}
+    <a class="ui right labeled icon button" href="{{ data }}" target="_blank">
+        <i class="external alternate icon"></i>
+        {{ 'dedi_sylius_sag_plugin.ui.certificate_of_truth'|trans }}
+    </a>
+{% else %}
+    <a class="ui right labeled icon disabled button">
+        <i class="external alternate icon"></i>
+        {{ 'dedi_sylius_sag_plugin.ui.certificate_of_truth'|trans }}
+    </a>
+{% endif %}
