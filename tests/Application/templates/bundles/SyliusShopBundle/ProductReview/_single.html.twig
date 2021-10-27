@@ -1,44 +1,47 @@
-<div class="comment" {{ sylius_test_html_attribute('comment', review.comment) }}>
+<li class="comment" {{ sylius_test_html_attribute('comment', review.comment) }}>
     <div class="content">
-        <span class="author"><i class="user icon"></i> {{ review.author.firstName }} {{ review.author.lastName|first|upper }}.</span>
-
-        <div class="metadata">
-            <div class="rating">
-                <div class="ui star rating" data-rating="{{ review.rating }}" data-max-rating="5" style="pointer-events: none;"></div>
-            </div>
-
-            <div class="date">
-                {{ 'dedi_sylius_sag_plugin.ui.published_at'|trans({
-                    '%date%': review.createdAt|format_datetime('short', 'short')
-                }) }}
-
+        <div class="author">
+            <img width="24px" height="24px" src="{{ asset('bundles/dedisyliussagplugin/img/ico_user.png') }}">
+            <span>{{ review.author.firstName }} {{ review.author.lastName|first|upper }}</span>
+            <br>
+            <span class="time">
+                <span class="published">
+                    {{ 'dedi_sylius_sag_plugin.ui.published_at'|trans({
+                        '%date%': review.createdAt|format_datetime('short', 'short')
+                    }) }}
+                </span>
                 {% if review.SAGOrderedAt %}
                     ({{ 'dedi_sylius_sag_plugin.ui.ordered_on_date'|trans({
-                        '%date%': review.SAGOrderedAt|format_date('short')
-                    }) }})
+                    '%date%': review.SAGOrderedAt|format_date('short')
+                }) }})
                 {% endif %}
-            </div>
+            </span>
         </div>
 
-        <div class="text">{{ review.comment }}</div>
+        <div class="reviewTxt">
+            <div class="steavisgarantisStar">
+                <div class="ui star rating" data-rating="{{ review.rating }}" data-max-rating="5" style="pointer-events: none;"></div>
+            </div>
+            <p>{{ review.comment }}</p>
 
-        {% if review.SAGAnswerComment %}
-            <div class="comments">
-                <div class="comment">
-                    <div class="content">
-                        <span class="author">{{ 'dedi_sylius_sag_plugin.ui.merchant_answer'|trans }}</span>
-                        <div class="metadata">
-                            <div class="date">
+            {% if review.SAGAnswerComment %}
+                <div class="reponse">
+                    <div class="author">
+                        <img width="12" height="12" src="{{ asset('bundles/dedisyliussagplugin/img/ico_pen.png') }}">
+                        <span>{{ 'dedi_sylius_sag_plugin.ui.merchant_answer'|trans }}</span>
+                        <br>
+                        <span class="time">
+                            <span class="published">
                                 {{ 'dedi_sylius_sag_plugin.ui.published_at'|trans({
                                     '%date%': review.SAGAnswerCreatedAt|format_datetime('short', 'short')
                                 }) }}
-                            </div>
-                        </div>
-                        <div class="text">{{ review.SAGAnswerComment }}</div>
+                            </span>
+                        </span>
                     </div>
+                    <p>{{ review.SAGAnswerComment }}</p>
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-</div>
+</li>
 
