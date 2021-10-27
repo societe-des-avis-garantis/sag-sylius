@@ -8,8 +8,6 @@ dedi_sylius_sag_plugin:
         show_reviews: Voir les avis
         sag_logo: Logo Société des Avis Garantis
         product_identificiation: Identification produit
-        ean13: ean13
-        upc: upc
         see_certificate: Voir le certificat
         bar_chart_title: Répartition des notes pour %product_name%
         based_on_x_reviews: Basé sur %count% avis
@@ -17,13 +15,14 @@ dedi_sylius_sag_plugin:
         ordered_on_date: 'Date de commande: %date%'
         ordered_at: Date de commande
         api_key_configs: SAG Clés d'api
-        sag_configuration: SAG Configuration
+        sag_configuration: Configuration SAG
         sag_configuration_description: Configurer vos clés d'api
         api_key: Clé api
         certificate_of_truth_url: Lien vers le certificat
         certificate_of_truth: Certificat
         edit_api_key_config: Modifier une configuration de clé d'api
         new_api_key_config: Créer une configuration de clé d'api
+        sag_channel_configuration: Configuration SAG
 
     form:
         id_site: Id site
@@ -31,3 +30,7 @@ dedi_sylius_sag_plugin:
         key: Clé
         locales: Activé pour les locales suivante
         channels: Activé pour les cannaux suivante
+        ean13: ean13
+        upc: upc
+        show_iframe_widget: Affichage du widget iframe
+        show_footer_certificate_link: Affichage du certificat en pied de page
