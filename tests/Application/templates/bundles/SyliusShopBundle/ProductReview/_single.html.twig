@@ -1,6 +1,6 @@
 <div class="comment" {{ sylius_test_html_attribute('comment', review.comment) }}>
     <div class="content">
-        <a class="author"><i class="user icon"></i> {{ review.author.firstName }} {{ review.author.lastName|first|upper }}.</a>
+        <span class="author"><i class="user icon"></i> {{ review.author.firstName }} {{ review.author.lastName|first|upper }}.</span>
 
         <div class="metadata">
             <div class="rating">
@@ -26,7 +26,7 @@
             <div class="comments">
                 <div class="comment">
                     <div class="content">
-                        <a class="author"><i class="user icon"></i> Jenny Hess</a>
+                        <span class="author">{{ 'dedi_sylius_sag_plugin.ui.merchant_answer'|trans }}</span>
                         <div class="metadata">
                             <div class="date">
                                 {{ 'dedi_sylius_sag_plugin.ui.published_at'|trans({
