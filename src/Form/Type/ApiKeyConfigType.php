@@ -5,13 +5,17 @@ declare(strict_types=1);
 namespace Dedi\SyliusSAGPlugin\Form\Type;
 
 use Dedi\SyliusSAGPlugin\Context\ConfigurationContextInterface;
+use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
+use Dedi\SyliusSAGPlugin\Validator\ApiKeyConfigIsUniqueForLocalesAndChannels;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\LocaleBundle\Form\Type\LocaleChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Regex;
 
 final class ApiKeyConfigType extends AbstractType
 {
@@ -33,19 +37,19 @@ final class ApiKeyConfigType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('idSite', NumberType::class, [
-                'label' => 'dedi_sylius_sag_plugin.form.id_site',
-                'required' => true,
-                'html5' => true,
-            ])
-            ->add('countryCode', TextType::class, [
-                'label' => 'dedi_sylius_sag_plugin.form.country_code',
-                'required' => true,
-            ])
-            ->add('key', TextType::class, [
+            ->add('apiKey', TextType::class, [
                 'label' => 'dedi_sylius_sag_plugin.form.key',
                 'required' => true,
+                'constraints' => [
+                    new NotNull([
+                        'groups' => ['default', 'sylius'],
+                    ]),
+                    new Regex([
+                        'pattern' => ApiKeyInterface::VALUE_REGEX,
+                        'groups' => ['default', 'sylius'],
+                    ]),
+                ],
+                'validation_groups' => ['default', 'sylius'],
             ])
             ->add('orderStatesToExport', ChoiceType::class, [
                 'label' => 'dedi_sylius_sag_plugin.form.order_states_to_export',
@@ -85,6 +89,16 @@ final class ApiKeyConfigType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver
+            ->setDefault('constraints', [
+                new ApiKeyConfigIsUniqueForLocalesAndChannels(['groups' => ['default', 'sylius']]),
+            ])
+            ->setDefault('validation_groups', ['default', 'sylius'])
         ;
     }
 }

@@ -3,6 +3,8 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
         <import resource="services/api.xml"/>
+        <import resource="services/calculator.xml"/>
+        <import resource="services/command.xml"/>
         <import resource="services/context.xml"/>
         <import resource="services/controller.xml"/>
         <import resource="services/event_listener.xml"/>
@@ -12,5 +14,14 @@
         <import resource="services/form.xml"/>
         <import resource="services/menu.xml"/>
         <import resource="services/specification.xml"/>
+        <import resource="services/updater.xml"/>
+        <import resource="services/validators.xml"/>
     </imports>
+
+    <services>
+        <service id="dedi.sylius_sag_plugin.http_client"
+                 class="Symfony\Contracts\HttpClient\HttpClientInterface">
+            <factory class="Symfony\Component\HttpClient\HttpClient" method="create" />
+        </service>
+    </services>
 </container>

@@ -11,6 +11,7 @@ dedi_sylius_sag_plugin:
         see_certificate: See certificate
         bar_chart_title: Distribution of scores for %product_name%
         based_on_x_reviews: 'Based on %count% review.|Based on %count% reviews.'
+        x_reviews: '%count% review|%count% reviews'
         published_at: Published on the %date%
         ordered_on_date: Ordered on the %date%
         ordered_at: Ordered at
@@ -35,6 +36,7 @@ dedi_sylius_sag_plugin:
         channels: Enabled for the follwing channels
         ean13: ean13
         upc: upc
+        show_javascript_widget: Show javascript widget
         show_iframe_widget: Show iframe widget
         show_footer_certificate_link: Show footer certificate link
         order_states_to_export: Status of orders to export

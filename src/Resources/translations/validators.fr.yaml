@@ -1,0 +1,2 @@
+dedi_sylius_sag_plugin:
+    non_unique_for_locales_and_channels: Une clé d'api est déjà configurée pour la combinaison de locale et de canaux selectionés

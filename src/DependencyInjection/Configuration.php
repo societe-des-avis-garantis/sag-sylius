@@ -6,9 +6,14 @@ namespace Dedi\SyliusSAGPlugin\DependencyInjection;
 
 use Dedi\SyliusSAGPlugin\Entity\ApiKeyConfig;
 use Dedi\SyliusSAGPlugin\Entity\ApiKeyConfigInterface;
+use Dedi\SyliusSAGPlugin\Entity\RepartitionOfScores;
+use Dedi\SyliusSAGPlugin\Entity\RepartitionOfScoresInterface;
+use Dedi\SyliusSAGPlugin\Factory\RepartitionOfScoresFactory;
 use Dedi\SyliusSAGPlugin\Form\Type\ApiKeyConfigType;
 use Dedi\SyliusSAGPlugin\Repository\Config\ApiKeyConfigRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Bundle\ResourceBundle\Form\Type\DefaultResourceType;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -55,6 +60,23 @@ final class Configuration implements ConfigurationInterface
                                         ->scalarNode('repository')->defaultValue(ApiKeyConfigRepository::class)->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                         ->scalarNode('form')->defaultValue(ApiKeyConfigType::class)->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('repartition_of_scores')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('model')->defaultValue(RepartitionOfScores::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(RepartitionOfScoresInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('controller')->defaultValue(ResourceController::class)->end()
+                                        ->scalarNode('repository')->defaultValue(EntityRepository::class)->end()
+                                        ->scalarNode('factory')->defaultValue(RepartitionOfScoresFactory::class)->end()
+                                        ->scalarNode('form')->defaultValue(DefaultResourceType::class)->end()
                                     ->end()
                                 ->end()
                             ->end()

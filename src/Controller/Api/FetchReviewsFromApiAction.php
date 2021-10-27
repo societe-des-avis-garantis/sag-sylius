@@ -7,6 +7,7 @@ namespace Dedi\SyliusSAGPlugin\Controller\Api;
 use Dedi\SyliusSAGPlugin\Api\ReviewFetcherInterface;
 use Dedi\SyliusSAGPlugin\Model\Api\FetchReviewsRequest;
 use Dedi\SyliusSAGPlugin\Repository\Review\ProductReviewRepositoryInterface;
+use Dedi\SyliusSAGPlugin\Updater\RepartitionOfScoresUpdaterInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,12 +20,17 @@ class FetchReviewsFromApiAction
     /** @var ProductReviewRepositoryInterface */
     private $productReviewRepository;
 
+    /** @var RepartitionOfScoresUpdaterInterface */
+    private $repartitionOfScoresUpdater;
+
     public function __construct(
         ReviewFetcherInterface $reviewFetcher,
-        ProductReviewRepositoryInterface $productReviewRepository
+        ProductReviewRepositoryInterface $productReviewRepository,
+        RepartitionOfScoresUpdaterInterface $repartitionOfScoresUpdater
     ) {
         $this->reviewFetcher = $reviewFetcher;
         $this->productReviewRepository = $productReviewRepository;
+        $this->repartitionOfScoresUpdater = $repartitionOfScoresUpdater;
     }
 
     public function __invoke(
@@ -63,6 +69,7 @@ class FetchReviewsFromApiAction
         }
 
         $this->productReviewRepository->bulkSave($reviews);
+        $this->repartitionOfScoresUpdater->__invoke($reviews, $fetchReviewsRequest->getCountryCode());
 
         return new JsonResponse(['message' => 'Reviews  persisted.']);
     }

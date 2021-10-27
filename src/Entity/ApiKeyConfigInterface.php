@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Entity;
 
+use Dedi\SyliusSAGPlugin\Entity\Channel\ChannelInterface;
 use Dedi\SyliusSAGPlugin\Model\ApiKeyInterface;
 use Dedi\SyliusSAGPlugin\Model\CertificateOfTruthAwareInterface;
 use Doctrine\Common\Collections\Collection;
@@ -12,11 +13,9 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface ApiKeyConfigInterface extends ResourceInterface, ApiKeyInterface, CertificateOfTruthAwareInterface
 {
-    public function setIdSite(int $idSite): self;
+    public function getApiKey(): string;
 
-    public function setCountryCode(string $countryCode): self;
-
-    public function setKey(string $key): self;
+    public function setApiKey(?string $apiKey): self;
 
     public function setCertificateOfTruthUrl(?string $certificateOfTruthUrl): self;
 
@@ -60,4 +59,15 @@ interface ApiKeyConfigInterface extends ResourceInterface, ApiKeyInterface, Cert
     public function removeLocale(LocaleInterface $locale): self;
 
     public function hasLocale(LocaleInterface $locale): bool;
+
+    /**
+     * @return Collection<array-key, ChannelInterface>
+     */
+    public function getChannels(): Collection;
+
+    public function addChannel(ChannelInterface $channel): self;
+
+    public function removeChannel(ChannelInterface $channel): self;
+
+    public function hasChannel(ChannelInterface $channel): bool;
 }

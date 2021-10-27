@@ -15,5 +15,14 @@ use Sylius\Component\Core\Model\Product as BaseProduct;
  */
 class Product extends BaseProduct implements DediSAGProductInterface
 {
-    use DediSAGProductTrait;
+    use DediSAGProductTrait {
+        __construct as initializeDediSAGProduct;
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->initializeDediSAGProduct();
+    }
 }

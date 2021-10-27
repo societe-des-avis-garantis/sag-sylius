@@ -20,6 +20,10 @@ final class ChannelTypeExtension extends AbstractTypeExtension
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('SAGShowJavascriptWidget', CheckboxType::class, [
+                'required' => false,
+                'label' => 'dedi_sylius_sag_plugin.form.show_javascript_widget',
+            ])
             ->add('SAGShowIframeWidget', CheckboxType::class, [
                 'required' => false,
                 'label' => 'dedi_sylius_sag_plugin.form.show_iframe_widget',
