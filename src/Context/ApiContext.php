@@ -61,7 +61,7 @@ class ApiContext implements ApiContextInterface
         );
     }
 
-    protected function getDomain(string $countryCode): string
+    public function getDomain(string $countryCode): string
     {
         switch (strtolower($countryCode)) {
             case 'fr':
