@@ -80,7 +80,7 @@ class ApiKeyConfig implements ApiKeyConfigInterface
             throw new \LogicException(sprintf(
                 'Api Key "%s" with id "%s" does not have a valid format.',
                 $this->getApiKey(),
-                $this->id,
+                (string) $this->id,
             ));
         }
 

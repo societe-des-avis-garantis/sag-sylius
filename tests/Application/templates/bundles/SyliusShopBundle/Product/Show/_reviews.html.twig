@@ -4,13 +4,15 @@
     {% if reviewCount > 0 %}
         <div class="ui stackable grid segment">
             <div class="reviewGlobal">
-                <a href="{{ path('sylius_shop_product_review_index', {'slug': product.slug, '_locale': product.translation.locale}) }}">
+                <a href="#tabs-wrapper" class="tab-trigger" data-tab="reviews">
                     <img style="margin-right: 10px;vertical-align: top;" src="{{ asset('bundles/dedisyliussagplugin/img/cocarde.jpg') }}" width="20px">
                 </a>
                 <div class="steavisgarantisStar">
                     {% include '@SyliusShop/Product/_starRating.html.twig' %}
                 </div>
-                <a class="agpbt" href="{{ path('sylius_shop_product_review_index', {'slug': product.slug, '_locale': product.translation.locale}) }}">({{ reviewCount }} {{ 'sylius.ui.reviews'|trans }})</a>
+                <a class="agpbt tab-trigger" href="#tabs-wrapper" data-tab="reviews">
+                    ({{ reviewCount }} {{ 'sylius.ui.reviews'|trans }})
+                </a>
             </div>
         </div>
     {% endif %}

@@ -59,6 +59,7 @@
 
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <referencedProperty name="Symfony\Bundle\FrameworkBundle\Controller\AbstractController::$container"/>
                 <file name="src/Validator/ApiKeyConfigIsUniqueForLocalesAndChannelsValidator.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>

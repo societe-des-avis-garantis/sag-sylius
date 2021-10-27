@@ -12,6 +12,7 @@ sylius_ui:
         sylius.shop.layout.javascripts:
             blocks:
                 dedi_sag_widget_global: '@DediSyliusSAGPlugin/Shop/Layout/_widgetGlobal.html.twig'
+                dedi_sag_script: '@DediSyliusSAGPlugin/Shop/_scripts.html.twig'
 
         sylius.shop.product.show.tab_reviews:
             blocks:

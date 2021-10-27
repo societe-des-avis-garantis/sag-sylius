@@ -1,0 +1,75 @@
+$germany: #333333;
+$span: #021F3C;
+$italy: #067a45;
+
+.de {
+  p,
+  .largeNote,
+  .largeNote p {
+    color: $germany;
+  }
+
+  .author {
+    color: $germany;
+    img {
+      filter: grayscale(1);
+    }
+  }
+
+  .agBt {
+    background:$germany;
+    border: 1px solid $germany;
+    &:hover {
+      background: none;
+      color: $germany;
+    }
+  }
+}
+
+.es {
+  p,
+  .largeNote,
+  .largeNote p {
+    color: $span;
+  }
+
+  .author {
+    color: $span;
+    img {
+      filter: brightness(0.4);
+    }
+  }
+
+  .agBt {
+    background:$span;
+    border: 1px solid $span;
+    &:hover {
+      background:none;
+      color: $span;
+    }
+  }
+}
+
+.it {
+  p,
+  .largeNote,
+  .largeNote p {
+    color: #333;
+  }
+
+  .author {
+    color: #333333;
+    img {
+      filter: grayscale(1);
+    }
+  }
+
+  .agBt {
+    background: $italy;
+    border: 1px solid $italy;
+    &:hover {
+      background:none;
+      color: $italy;
+    }
+  }
+}

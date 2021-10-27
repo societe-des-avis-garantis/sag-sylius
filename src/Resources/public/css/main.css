@@ -77,7 +77,6 @@
     .reviewList .reponse span {
       font-size: 11px;
       line-height: 11px;
-      color: #175298;
       letter-spacing: 0; }
       .reviewList .reponse span img {
         margin-right: 6px;
@@ -186,3 +185,54 @@
   #agWidgetMain .reviewList .steavisgarantisStar {
     display: block;
     position: static; } }
+
+.de p,
+.de .largeNote,
+.de .largeNote p {
+  color: #333333; }
+
+.de .author {
+  color: #333333; }
+  .de .author img {
+    filter: grayscale(1); }
+
+.de .agBt {
+  background: #333333;
+  border: 1px solid #333333; }
+  .de .agBt:hover {
+    background: none;
+    color: #333333; }
+
+.es p,
+.es .largeNote,
+.es .largeNote p {
+  color: #021F3C; }
+
+.es .author {
+  color: #021F3C; }
+  .es .author img {
+    filter: brightness(0.4); }
+
+.es .agBt {
+  background: #021F3C;
+  border: 1px solid #021F3C; }
+  .es .agBt:hover {
+    background: none;
+    color: #021F3C; }
+
+.it p,
+.it .largeNote,
+.it .largeNote p {
+  color: #333; }
+
+.it .author {
+  color: #333333; }
+  .it .author img {
+    filter: grayscale(1); }
+
+.it .agBt {
+  background: #067a45;
+  border: 1px solid #067a45; }
+  .it .agBt:hover {
+    background: none;
+    color: #067a45; }

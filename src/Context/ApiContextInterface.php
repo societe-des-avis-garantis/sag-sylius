@@ -14,4 +14,6 @@ interface ApiContextInterface
         string $endpointCode,
         string $countryCode
     ): string;
+
+    public function getDomain(string $countryCode): string;
 }
