@@ -1,5 +1,9 @@
 sylius_ui:
     events:
+        sylius.shop.layout.stylesheets:
+            blocks:
+                dedi_sag_styles: '@DediSyliusSAGPlugin/Shop/_styles.html.twig'
+
         sylius.shop.layout.footer:
             blocks:
                 dedi_sag_widget_reassurance: '@DediSyliusSAGPlugin/Shop/Layout/Footer/_reassurance.html.twig'
