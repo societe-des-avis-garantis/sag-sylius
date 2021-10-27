@@ -28,7 +28,9 @@
             <argument key="$defaultDomain" type="string">https://www.societe-des-avis-garantis.fr</argument>
         </service>
 
-        <service id="dedi.sylius_sag_plugin.context.configuration_context" class="Dedi\SyliusSAGPlugin\Context\ConfigurationContext"/>
+        <service id="dedi.sylius_sag_plugin.context.configuration_context" class="Dedi\SyliusSAGPlugin\Context\ConfigurationContext">
+            <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>
+        </service>
 
         <service id="dedi.sylius_sag_plugin.context.certificate_of_truth_context" class="Dedi\SyliusSAGPlugin\Context\CertificateOfTruthContext">
             <argument key="$apiKeyContext" type="service" id="dedi.sylius_sag_plugin.context.api_key_context"/>

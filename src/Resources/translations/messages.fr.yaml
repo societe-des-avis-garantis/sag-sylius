@@ -18,6 +18,8 @@ dedi_sylius_sag_plugin:
         sag_configuration: Configuration SAG
         sag_configuration_description: Configurer vos clés d'api
         api_key: Clé api
+        exported_orders_status: Export des commandes
+        general: Général
         certificate_of_truth_url: Lien vers le certificat
         certificate_of_truth: Certificat
         edit_api_key_config: Modifier une configuration de clé d'api
@@ -34,3 +36,6 @@ dedi_sylius_sag_plugin:
         upc: upc
         show_iframe_widget: Affichage du widget iframe
         show_footer_certificate_link: Affichage du certificat en pied de page
+        order_states_to_export: Satuts des commandes à exporter
+        order_payment_states_to_export: Satuts paiement des commandes à exporter
+        order_shipping_states_to_export: Satuts livraison des commandes à exporter

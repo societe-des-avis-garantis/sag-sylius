@@ -12,7 +12,6 @@ trait OrderRepositoryTrait
      * @param \DateTimeImmutable $from
      * @param \DateTimeImmutable $to
      * @param array $states
-     * @param array $checkoutStates
      * @param array $paymentStates
      * @param array $shippingStates
      *
@@ -22,13 +21,12 @@ trait OrderRepositoryTrait
         \DateTimeImmutable $from,
         \DateTimeImmutable $to,
         array $states,
-        array $checkoutStates,
         array $paymentStates,
         array $shippingStates
     ): array {
 
         $query = $this->createQueryBuilder('o')
-            ->andWhere('o.createdAt BETWEEN :from AND :to')
+            ->andWhere('o.checkoutCompletedAt BETWEEN :from AND :to')
             ->setParameter('from', $from)
             ->setParameter('to', $to)
         ;
@@ -36,12 +34,6 @@ trait OrderRepositoryTrait
         if ([] !== $states) {
             $query->andWhere('o.state in (:states)')
                 ->setParameter('states', $states)
-            ;
-        }
-
-        if ([] !== $checkoutStates) {
-            $query->andWhere('o.checkoutState in (:checkoutStates)')
-                ->setParameter('checkoutStates', $checkoutStates)
             ;
         }
 

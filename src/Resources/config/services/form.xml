@@ -11,5 +11,12 @@
                  class="Dedi\SyliusSAGPlugin\Form\Extension\ProductTypeExtension">
             <tag name="form.type_extension"/>
         </service>
+
+        <service id="dedi.sylius_sag_plugin.form.type.api_key_config_type"
+                 class="Dedi\SyliusSAGPlugin\Form\Type\ApiKeyConfigType">
+            <argument key="$configurationContext" type="service" id="dedi.sylius_sag_plugin.context.configuration_context"/>
+
+            <tag name="form.type"/>
+        </service>
     </services>
 </container>

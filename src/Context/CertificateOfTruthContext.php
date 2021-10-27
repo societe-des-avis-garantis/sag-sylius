@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Dedi\SyliusSAGPlugin\Context;
 
-use Dedi\SyliusSAGPlugin\Model\CertificateOfTruthAwareInterface;
-
 final class CertificateOfTruthContext implements CertificateOfTruthContextInterface
 {
     /** @var ApiKeyContextInterface */
@@ -19,7 +17,6 @@ final class CertificateOfTruthContext implements CertificateOfTruthContextInterf
 
     public function getCertificateOfTruthUrl(): ?string
     {
-        /** @var CertificateOfTruthAwareInterface|null $apiKeyConfig */
         $apiKeyConfig = $this->apiKeyContext->getApiKey();
         if (null === $apiKeyConfig) {
             return null;

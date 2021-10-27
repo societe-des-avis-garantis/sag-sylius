@@ -12,7 +12,6 @@ interface OrderRepositoryInterface
      * @param \DateTimeImmutable $from
      * @param \DateTimeImmutable $to
      * @param array $states
-     * @param array $checkoutStates
      * @param array $paymentStates
      * @param array $shippingStates
      *
@@ -22,7 +21,6 @@ interface OrderRepositoryInterface
         \DateTimeImmutable $from,
         \DateTimeImmutable $to,
         array $states,
-        array $checkoutStates,
         array $paymentStates,
         array $shippingStates
     ): array;

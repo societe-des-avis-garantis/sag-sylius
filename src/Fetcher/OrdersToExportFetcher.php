@@ -31,7 +31,6 @@ class OrdersToExportFetcher implements OrdersToExportFetcherInterface
             $from,
             $to,
             $this->configurationContext->getOrderStatesToExport(),
-            $this->configurationContext->getOrderCheckoutStatesToExport(),
             $this->configurationContext->getOrderPaymentStatesToExport(),
             $this->configurationContext->getOrderShippingStatesToExport()
         );

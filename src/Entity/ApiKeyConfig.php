@@ -38,6 +38,15 @@ class ApiKeyConfig implements ApiKeyConfigInterface
     /** @var ?string */
     protected $certificateOfTruthUrl;
 
+    /** @var string[] */
+    protected $orderStatesToExport = [];
+
+    /** @var string[] */
+    protected $orderPaymentStatesToExport = [];
+
+    /** @var string[] */
+    protected $orderShippingStatesToExport = [];
+
     /**
      * @var Collection|LocaleInterface[]
      *
@@ -119,6 +128,42 @@ class ApiKeyConfig implements ApiKeyConfigInterface
     public function setCertificateOfTruthUrl(?string $certificateOfTruthUrl): ApiKeyConfigInterface
     {
         $this->certificateOfTruthUrl = $certificateOfTruthUrl;
+
+        return $this;
+    }
+
+    public function getOrderStatesToExport(): array
+    {
+        return $this->orderStatesToExport;
+    }
+
+    public function setOrderStatesToExport(array $orderStatesToExport): ApiKeyConfigInterface
+    {
+        $this->orderStatesToExport = $orderStatesToExport;
+
+        return $this;
+    }
+
+    public function getOrderPaymentStatesToExport(): array
+    {
+        return $this->orderPaymentStatesToExport;
+    }
+
+    public function setOrderPaymentStatesToExport(array $orderPaymentStatesToExport): ApiKeyConfigInterface
+    {
+        $this->orderPaymentStatesToExport = $orderPaymentStatesToExport;
+
+        return $this;
+    }
+
+    public function getOrderShippingStatesToExport(): array
+    {
+        return $this->orderShippingStatesToExport;
+    }
+
+    public function setOrderShippingStatesToExport(array $orderShippingStatesToExport): ApiKeyConfigInterface
+    {
+        $this->orderShippingStatesToExport = $orderShippingStatesToExport;
 
         return $this;
     }
