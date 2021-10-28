@@ -6,7 +6,10 @@
   .reviewGlobal .steavisgarantisStar {
     margin-right: 10px; }
 
-/* Etoile */
+.rad4 {
+  border-radius: 4px; }
+
+/* Stars */
 .steavisgarantisStar {
   display: flex;
   align-items: center;
@@ -20,7 +23,7 @@
       color: #F5D700 !important;
       text-shadow: none !important; }
 
-/*NOTES*/
+/* score */
 .largeNote, .largeNote p {
   font-family: 'Oswald', Arial;
   font-weight: 700;
@@ -33,7 +36,7 @@
   font-size: 50px;
   letter-spacing: -2px; }
 
-/*list des avis*/
+/* list reviews */
 .reviewList {
   padding: 4px 0;
   margin: 8px auto 12px auto;
@@ -90,7 +93,7 @@
 .steavisgarantisStats {
   font-size: 11px; }
 
-/*boutons*/
+/* buttons */
 .agBt {
   display: inline-block;
   background: #175298;
@@ -103,7 +106,8 @@
   text-align: center;
   padding: 4px 10px;
   width: auto;
-  text-decoration: none; }
+  text-decoration: none;
+  cursor: pointer; }
   .agBt:hover {
     background: none;
     color: #175298;
