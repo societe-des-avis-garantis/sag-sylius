@@ -1,10 +1,9 @@
-
 const loadMoreElement = document.querySelector('[data-sag-load-more]');
 
 if (loadMoreElement) {
     const reviewCount = parseInt(loadMoreElement.dataset.sagReviewCount);
     const maxPerPage = parseInt(loadMoreElement.dataset.sagMaxPerPage);
-    const lastPage = Math.trunc(reviewCount / maxPerPage);
+    const lastPage = Math.ceil(reviewCount / maxPerPage);
 
     const reviewListContainer = document.querySelector(loadMoreElement.dataset.sagReviewListContainerSelector);
 
