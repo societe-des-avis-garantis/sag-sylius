@@ -190,6 +190,10 @@
     display: block;
     position: static; } }
 
+#sag-loader {
+  display: block;
+  margin: auto; }
+
 .de p,
 .de .largeNote,
 .de .largeNote p {

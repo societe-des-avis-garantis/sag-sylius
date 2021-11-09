@@ -4,6 +4,7 @@ if (loadMoreElement) {
     const reviewCount = parseInt(loadMoreElement.dataset.sagReviewCount);
     const maxPerPage = parseInt(loadMoreElement.dataset.sagMaxPerPage);
     const lastPage = Math.ceil(reviewCount / maxPerPage);
+    const loader = document.querySelector(loadMoreElement.dataset.sagLoaderSelector);
 
     const reviewListContainer = document.querySelector(loadMoreElement.dataset.sagReviewListContainerSelector);
 
@@ -19,7 +20,7 @@ if (loadMoreElement) {
 
         const url = loadMoreElement.dataset.sagUrl.replace('CURRENT_PAGE', nextPage);
 
-        loadMoreElement.classList.add('loading');
+        loader.style.display = null;
         loadMoreElement.disabled = true;
 
         fetch(url).then((response) => {
@@ -38,8 +39,10 @@ if (loadMoreElement) {
                 loadMoreElement.style.display = 'none';
             }
 
-            loadMoreElement.classList.remove('loading');
+            loader.style.display = 'none';
             loadMoreElement.disabled = false;
+
+            $('.ui.rating').rating();
         });
     });
 }
