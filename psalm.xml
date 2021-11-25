@@ -59,6 +59,10 @@
 
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <referencedProperty name="Dedi\SyliusSAGPlugin\Validator\ApiKeyConfigIsUniqueForLocalesAndChannels::$groups"/>
+                <file name="src/Validator/ApiKeyConfigIsUniqueForLocalesAndChannels.php" />
+            </errorLevel>
+            <errorLevel type="suppress">
                 <referencedProperty name="Symfony\Bundle\FrameworkBundle\Controller\AbstractController::$container"/>
                 <file name="src/Validator/ApiKeyConfigIsUniqueForLocalesAndChannelsValidator.php" />
             </errorLevel>
