@@ -1,5 +1,5 @@
 {
-    "name": "sylius/plugin-skeleton",
+    "name": "dedi/sylius-sag-plugin",
     "type": "sylius-plugin",
     "description": "Acme example plugin for Sylius.",
     "keywords": [
