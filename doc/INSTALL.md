@@ -222,6 +222,39 @@ sylius_order:
                 repository: App\Repository\Order\OrderRepository
 ```
 
+## Configure the Channel
+
+Your `ProductReview` entity needs to implement the `Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewInterface` interface and use the `Dedi\SyliusSAGPlugin\Entity\Review\ProductReviewTrait` trait.
+
+```php
+use Dedi\SyliusSAGPlugin\Entity\Channel\ChannelInterface as DediSAGChannelInterface;
+use Dedi\SyliusSAGPlugin\Entity\Channel\ChannelTrait as DediSAGChannelTrait;
+use Doctrine\ORM\Mapping as ORM;
+use Sylius\Component\Core\Model\Channel as BaseChannel;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="sylius_channel")
+ */
+class Channel extends BaseChannel implements DediSAGChannelInterface
+{
+    use DediSAGChannelTrait;
+}
+```
+
+Don't forget to update the Sylius resource config accordingly.
+
+```yaml
+# config/_sylius.yaml
+
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: Tests\Dedi\SyliusSAGPlugin\Application\src\Entity\Channel\Channel
+
+```
+
 ### Create migration
 
 Create migration, review and execute them
@@ -236,5 +269,5 @@ bin/console doctrine:migration:migrate
 Override sylius default templates.
 
 ```shell
-cp -R vendor/dedi/sylius-sag-plugin/test/Application/templates/* templates/
+cp -R vendor/dedi/sylius-sag-plugin/tests/Application/templates/* templates/
 ```
