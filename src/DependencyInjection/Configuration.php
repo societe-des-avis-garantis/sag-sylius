@@ -22,6 +22,10 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class Configuration implements ConfigurationInterface
 {
+    /**
+     * @psalm-suppress UnusedVariable
+     * @psalm-suppress UnusedMethodCall
+     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('dedi_sylius_sag_plugin');

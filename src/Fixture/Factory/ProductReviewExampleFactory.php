@@ -70,6 +70,9 @@ class ProductReviewExampleFactory extends BaseProductReviewExampleFactory
         return $review;
     }
 
+    /**
+     * @psalm-suppress UnusedClosureParam
+     */
     protected function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
