@@ -1,0 +1,10 @@
+{
+  "name": "sylius-sag-plugin",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dediagency/sylius-sag-plugin"
+  },
+  "author": "Dedi",
+  "license": "MIT"
+}
