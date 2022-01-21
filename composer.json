@@ -1,7 +1,7 @@
 {
     "name": "dedi/sylius-sag-plugin",
     "type": "sylius-plugin",
-    "description": "Acme example plugin for Sylius.",
+    "description": "Product review integration for Société des Avis Garantis.",
     "keywords": [
         "sylius",
         "sylius-plugin"
