@@ -21,11 +21,21 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php: ["7.4", "8.0"]
-                symfony: ["^4.4", "^5.2"]
-                sylius: ["^1.9", "^1.10"]
-                node: ["12.x"]
-                mysql: ["5.7", "8.0"]
+                php: [7.4, 8.0]
+                symfony: [^4.4, ^5.4]
+                sylius: [~1.9.0, ~1.10.0]
+                node: [12.x]
+                mysql: [5.7, 8.0]
+
+                exclude:
+                    -
+                        sylius: ~1.9.0
+                        symfony: ^4.4
+
+                    -
+                        sylius: ~1.9.0
+                        symfony: ^4.4
+
 
         env:
             APP_ENV: test
@@ -103,6 +113,13 @@ jobs:
                 if: matrix.sylius != ''
                 run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
 
+            -
+                name: Fix build on Sylius 1.9
+                if: matrix.sylius == '~1.9.0'
+                run: |
+                    composer require "friendsofsymfony/oauth-server-bundle:>2.0.0-alpha.0 ^2.0@dev" --no-update --no-scripts --no-interaction
+                    # Sylius issues on `json_array` type not existing
+                    composer require "doctrine/dbal:^2.6" --no-update --no-scripts --no-interaction
             -
                 name: Install PHP dependencies
                 run: composer install --no-interaction
