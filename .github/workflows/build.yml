@@ -14,7 +14,7 @@ on:
 
 jobs:
     tests:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-18.04
 
         name: "Sylius ${{ matrix.sylius }}, PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}, MySQL ${{ matrix.mysql }}"
 
@@ -23,14 +23,16 @@ jobs:
             matrix:
                 php: [7.4, 8.0]
                 symfony: [^4.4, ^5.2]
-                sylius: [~1.9.0, ~1.10.0]
-                node: [12.x]
+                sylius: [~1.9, ~1.10]
+                node: [14.x]
                 mysql: [5.7, 8.0]
 
                 exclude:
-                    -
-                        sylius: ~1.9.0
-                        php: 8.0
+                    - sylius: ~1.9.0
+                      php: 8.0
+
+                    - sylius: ~1.10.0
+                      symfony: 4.4
 
         env:
             APP_ENV: test
@@ -110,7 +112,7 @@ jobs:
 
             -
                 name: Install PHP dependencies
-                run: composer install --no-interaction
+                run: composer install --no-interaction --no-scripts
 
             -
                 name: Get Yarn cache directory
