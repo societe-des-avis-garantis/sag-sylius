@@ -26,13 +26,13 @@ const config = [
 ];
 
 export const buildAdmin = function buildAdmin() {
-  return gulp.src('./gulpfile/AdminBundle/gulpfile.babel.js', { read: false })
+  return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/gulpfile.babel.js', { read: false })
     .pipe(chug({ args: config, tasks: 'build' }));
 };
 buildAdmin.description = 'Build admin assets.';
 
 export const watchAdmin = function watchAdmin() {
-  return gulp.src('./gulpfile/AdminBundle/gulpfile.babel.js', { read: false })
+  return gulp.src('../../vendor/sylius/sylius/src/Sylius/Bundle/AdminBundle/gulpfile.babel.js', { read: false })
     .pipe(chug({ args: config, tasks: 'watch' }));
 };
 watchAdmin.description = 'Watch admin asset sources and rebuild on changes.';
