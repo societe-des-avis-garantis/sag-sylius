@@ -1,5 +1,5 @@
 {
-    "name": "sag/sylius-sag-plugin",
+    "name": "societe-des-avis-garantis/sylius-sag-plugin",
     "type": "sylius-plugin",
     "description": "Product review integration for Société des Avis Garantis.",
     "keywords": [

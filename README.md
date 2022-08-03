@@ -39,7 +39,7 @@ We’ll be happy to meet you, feel free to contact us. Learn more about us on ou
 Require plugin with composer:
 
 ```bash
-composer require dedi/sylius-sag-plugin --no-scripts
+composer require societe-des-avis-garantis/sylius-sag-plugin --no-scripts
 ```
 
 Symfony Flex will automatically register and configure the `config/bundles.php` file to add the line for the plugin :
