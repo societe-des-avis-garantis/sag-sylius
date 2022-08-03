@@ -357,4 +357,3 @@ The channel configuration form gets a new section where you can enable or disabl
 Reviews are now not editable in the back office to comply with Société des Avis Garantis requirements.
 
 ![docs/img/admin_review_index.png](doc/img/admin_review_index.png)
-
